@@ -44,30 +44,31 @@ namespace M04
             lblStatus.Text = "* New Customer";
             lblStatus.ForeColor = Color.Green;
             glueCode.EditValue = "";
-            txeName.EditValue = "";
-            txeShortName.EditValue = "";
-            txeContacts.EditValue = "";
-            txeEmail.EditValue = "";
-            txeAddr1.EditValue = "";
-            txeAddr2.EditValue = "";
-            txeAddr3.EditValue = "";
-            txeCountry.EditValue = "";
-            txeTelNo.EditValue = "";
-            txeFaxNo.EditValue = "";
+            txeName.Text = "";
+            txeShortName.Text = "";
+            txeContacts.Text = "";
+            txeEmail.Text = "";
+            txeAddr1.Text = "";
+            txeAddr2.Text = "";
+            txeAddr3.Text = "";
+            txeCountry.Text = "";
+            txePostCode.Text = "";
+            txeTelNo.Text = "";
+            txeFaxNo.Text = "";
             glueCustType.EditValue = "";
             glueSection.EditValue = "";
             glueTerm.EditValue = "";
             glueCurrency.EditValue = "";
             glueCalendar.EditValue = "";
-            txeEval.EditValue = "";
-            txeOthContract.EditValue = "";
-            txeOthAddr1.EditValue = "";
-            txeOthAddr2.EditValue = "";
-            txeOthAddr3.EditValue = "";
-            txeCREATE.EditValue = "0";
-            txeCDATE.EditValue = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-            txeUPDATE.EditValue = "0";
-            txeUDATE.EditValue = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+            txeEval.Text = "";
+            txeOthContract.Text = "";
+            txeOthAddr1.Text = "";
+            txeOthAddr2.Text = "";
+            txeOthAddr3.Text = "";
+            txeCREATE.Text = "0";
+            txeCDATE.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+            txeUPDATE.Text = "0";
+            txeUDATE.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             glueCode.Focus();
         }
 
@@ -129,7 +130,7 @@ namespace M04
 
             //All Customer
             sbSQL.Clear();
-            sbSQL.Append("SELECT OIDCUST AS No, Code AS Customer, Name AS CustomerName, ShortName, Contacts AS ContactName, Email, Address1, Address2, Address3, Country, TelephoneNo, ");
+            sbSQL.Append("SELECT OIDCUST AS No, Code AS Customer, Name AS CustomerName, ShortName, Contacts AS ContactName, Email, Address1, Address2, Address3, Country, PostCode, TelephoneNo, ");
             sbSQL.Append("       FaxNo, CustomerType, SalesSection, PaymentTerm, PaymentCurrency, CalendarNo, EvalutionPoint AS CustomerEvalutionPoint, OtherContact AS OtherContactName, ");
             sbSQL.Append("       OtherAddress1, OtherAddress2, OtherAddress3, CreatedBy, CreatedDate, UpdatedBy, UpdatedDate ");
             sbSQL.Append("FROM Customer ");
@@ -148,27 +149,27 @@ namespace M04
 
         private void bbiSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (glueCode.EditValue.ToString() == "")
+            if (glueCode.Text.Trim() == "")
             {
                 FUNC.msgWarning("Please input customer code.");
                 glueCode.Focus();
             }
-            else if (txeName.EditValue.ToString() == "")
+            else if (txeName.Text.Trim() == "")
             {
                 FUNC.msgWarning("Please input customer name.");
                 txeName.Focus();
             }
-            else if (txeShortName.EditValue.ToString() == "")
+            else if (txeShortName.Text.Trim() == "")
             {
                 FUNC.msgWarning("Please input short name.");
                 txeShortName.Focus();
             }
-            else if (glueCustType.EditValue.ToString() == "")
+            else if (glueCustType.Text.Trim() == "")
             {
                 FUNC.msgWarning("Please select customer type.");
                 glueCustType.Focus();
             }
-            else if (glueCalendar.EditValue.ToString() == "")
+            else if (glueCalendar.Text.Trim() == "")
             {
                 FUNC.msgWarning("Please select calendar no.");
                 glueCalendar.Focus();
@@ -180,28 +181,28 @@ namespace M04
                     StringBuilder sbSQL = new StringBuilder();
 
                     string strCREATE = "0";
-                    if (txeCREATE.EditValue != null)
+                    if (txeCREATE.Text.Trim() != "")
                     {
-                        strCREATE = txeCREATE.EditValue.ToString();
+                        strCREATE = txeCREATE.Text.Trim();
                     }
 
                     string strUPDATE = "0";
-                    if (txeUPDATE.EditValue != null)
+                    if (txeUPDATE.Text.Trim() != "")
                     {
-                        strUPDATE = txeUPDATE.EditValue.ToString();
+                        strUPDATE = txeUPDATE.Text.Trim();
                     }
 
                     sbSQL.Append("IF NOT EXISTS(SELECT Code FROM Customer WHERE Code = N'" + glueCode.Text.Trim() + "') ");
                     sbSQL.Append(" BEGIN ");
                     sbSQL.Append("  INSERT INTO Customer(Code, Name, ShortName, Contacts, Email, Address1, Address2, Address3, Country, PostCode, TelephoneNo, FaxNo, CustomerType, SalesSection, PaymentTerm, PaymentCurrency, CalendarNo, EvalutionPoint, OtherContact, OtherAddress1, OtherAddress2, OtherAddress3, CreatedBy, CreatedDate, UpdatedBy, UpdatedDate) ");
-                    sbSQL.Append("  VALUES(N'" + glueCode.Text.Trim() + "', N'" + txeName.Text.Trim() + "', N'" + txeShortName.Text.Trim() + "', N'" + txeContacts.Text.Trim() + "', N'" + txeEmail.Text.Trim() + "', N'" + txeAddr1.Text.Trim() + "', N'" + txeAddr2.Text.Trim() + "', N'" + txeAddr3.Text.Trim() + "', N'" + txeCountry.Text.Trim() + "', N'', N'" + txeTelNo.Text.Trim() + "', ");
+                    sbSQL.Append("  VALUES(N'" + glueCode.Text.Trim() + "', N'" + txeName.Text.Trim() + "', N'" + txeShortName.Text.Trim() + "', N'" + txeContacts.Text.Trim() + "', N'" + txeEmail.Text.Trim() + "', N'" + txeAddr1.Text.Trim() + "', N'" + txeAddr2.Text.Trim() + "', N'" + txeAddr3.Text.Trim() + "', N'" + txeCountry.Text.Trim() + "', N'" + txePostCode.Text.Trim() + "', N'" + txeTelNo.Text.Trim() + "', ");
                     sbSQL.Append("         N'" + txeFaxNo.Text.Trim() + "', '" + glueCustType.EditValue.ToString() + "', N'" + glueSection.Text.Trim() + "', N'" + glueTerm.Text.Trim() + "', N'" + glueCurrency.Text.Trim() + "', '" + glueCalendar.EditValue.ToString() + "', N'" + txeEval.Text.Trim() + "', N'" + txeOthContract.Text.Trim() + "', N'" + txeOthAddr1.Text.Trim() + "', N'" + txeOthAddr2.Text.Trim() + "', N'" + txeOthAddr3.Text.Trim() + "', '" + strCREATE + "', GETDATE(), '" + strUPDATE + "', GETDATE()) ");
                     sbSQL.Append(" END ");
                     sbSQL.Append("ELSE ");
                     sbSQL.Append(" BEGIN ");
                     sbSQL.Append("  UPDATE Customer SET ");
                     sbSQL.Append("      Code = N'" + glueCode.Text.Trim() + "', Name = N'" + txeName.Text.Trim() + "', ShortName = N'" + txeShortName.Text.Trim() + "', Contacts = N'" + txeContacts.Text.Trim() + "', Email = N'" + txeEmail.Text.Trim() + "', Address1 = N'" + txeAddr1.Text.Trim() + "', Address2 = N'" + txeAddr2.Text.Trim() + "', Address3 = N'" + txeAddr3.Text.Trim() + "', ");
-                    sbSQL.Append("      Country = N'" + txeCountry.Text.Trim() + "', PostCode = N'', TelephoneNo = N'" + txeTelNo.Text.Trim() + "', FaxNo = N'" + txeFaxNo.Text.Trim() + "', CustomerType = '" + glueCustType.EditValue.ToString() + "', SalesSection = N'" + glueSection.Text.Trim() + "', PaymentTerm = N'" + glueTerm.Text.Trim() + "', ");
+                    sbSQL.Append("      Country = N'" + txeCountry.Text.Trim() + "', PostCode = N'" + txePostCode.Text.Trim() + "', TelephoneNo = N'" + txeTelNo.Text.Trim() + "', FaxNo = N'" + txeFaxNo.Text.Trim() + "', CustomerType = '" + glueCustType.EditValue.ToString() + "', SalesSection = N'" + glueSection.Text.Trim() + "', PaymentTerm = N'" + glueTerm.Text.Trim() + "', ");
                     sbSQL.Append("      PaymentCurrency = N'" + glueCurrency.Text.Trim() + "', CalendarNo = '" + glueCalendar.EditValue.ToString() + "', EvalutionPoint = N'" + txeEval.Text.Trim() + "', OtherContact = N'" + txeOthContract.Text.Trim() + "', OtherAddress1 = N'" + txeOthAddr1.Text.Trim() + "', OtherAddress2 = N'" + txeOthAddr2.Text.Trim() + "', OtherAddress3 = N'" + txeOthAddr3.Text.Trim() + "', ");
                     sbSQL.Append("      UpdatedBy = '" + strUPDATE +"', UpdatedDate = GETDATE() ");
                     sbSQL.Append("  WHERE(OIDCUST = '" + txeID.Text.Trim() + "') ");
@@ -233,42 +234,40 @@ namespace M04
 
         private void glueCode_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                txeName.Focus();
-            }
+            txeCountry.Text = gvCustomer.GetFocusedRowCellValue("Country").ToString();
         }
 
         private void glueCode_LostFocus(object sender, EventArgs e)
         {
             string strCODE = glueCode.Text.ToUpper().Trim();
-            txeID.EditValue = "";
+            txeID.Text = "";
             lblStatus.Text = "* New Customer";
             lblStatus.ForeColor = Color.Green;
-            txeName.EditValue = "";
-            txeShortName.EditValue = "";
-            txeContacts.EditValue = "";
-            txeEmail.EditValue = "";
-            txeAddr1.EditValue = "";
-            txeAddr2.EditValue = "";
-            txeAddr3.EditValue = "";
-            txeCountry.EditValue = "";
-            txeTelNo.EditValue = "";
-            txeFaxNo.EditValue = "";
+            txeName.Text = "";
+            txeShortName.Text = "";
+            txeContacts.Text = "";
+            txeEmail.Text = "";
+            txeAddr1.Text = "";
+            txeAddr2.Text = "";
+            txeAddr3.Text = "";
+            txeCountry.Text = "";
+            txePostCode.Text = "";
+            txeTelNo.Text = "";
+            txeFaxNo.Text = "";
             glueCustType.EditValue = "";
             glueSection.EditValue = "";
             glueTerm.EditValue = "";
             glueCurrency.EditValue = "";
             glueCalendar.EditValue = "";
-            txeEval.EditValue = "";
-            txeOthContract.EditValue = "";
-            txeOthAddr1.EditValue = "";
-            txeOthAddr2.EditValue = "";
-            txeOthAddr3.EditValue = "";
-            txeCREATE.EditValue = "0";
-            txeCDATE.EditValue = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-            txeUPDATE.EditValue = "0";
-            txeUDATE.EditValue = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+            txeEval.Text = "";
+            txeOthContract.Text = "";
+            txeOthAddr1.Text = "";
+            txeOthAddr2.Text = "";
+            txeOthAddr3.Text = "";
+            txeCREATE.Text = "0";
+            txeCDATE.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+            txeUPDATE.Text = "0";
+            txeUDATE.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
 
             string gCode = glueCode.Text.ToUpper().Trim();
 
@@ -302,33 +301,34 @@ namespace M04
             string[] arrCust = new DBQuery(sbSQL).getMultipleValue();
             if (arrCust.Length > 0)
             {
-                txeID.EditValue = arrCust[0];
+                txeID.Text = arrCust[0];
                 lblStatus.Text = "* Edit Customer";
                 lblStatus.ForeColor = Color.Red;
-                txeName.EditValue = arrCust[2];
-                txeShortName.EditValue = arrCust[3];
-                txeContacts.EditValue = arrCust[4];
-                txeEmail.EditValue = arrCust[5];
-                txeAddr1.EditValue = arrCust[6];
-                txeAddr2.EditValue = arrCust[7];
-                txeAddr3.EditValue = arrCust[8];
-                txeCountry.EditValue = arrCust[9];
-                txeTelNo.EditValue = arrCust[11];
-                txeFaxNo.EditValue = arrCust[12];
+                txeName.Text = arrCust[2];
+                txeShortName.Text = arrCust[3];
+                txeContacts.Text = arrCust[4];
+                txeEmail.Text = arrCust[5];
+                txeAddr1.Text = arrCust[6];
+                txeAddr2.Text = arrCust[7];
+                txeAddr3.Text = arrCust[8];
+                txeCountry.Text = arrCust[9];
+                txePostCode.Text = arrCust[10];
+                txeTelNo.Text = arrCust[11];
+                txeFaxNo.Text = arrCust[12];
                 glueCustType.EditValue = arrCust[13];
                 glueSection.EditValue = arrCust[14];
                 glueTerm.EditValue = arrCust[15];
                 glueCurrency.EditValue = arrCust[16];
                 glueCalendar.EditValue = arrCust[17];
-                txeEval.EditValue = arrCust[18]; ;
-                txeOthContract.EditValue = arrCust[19];
-                txeOthAddr1.EditValue = arrCust[20];
-                txeOthAddr2.EditValue = arrCust[21];
-                txeOthAddr3.EditValue = arrCust[22];
-                txeCREATE.EditValue = arrCust[23];
-                txeCDATE.EditValue = arrCust[24];
-                txeUPDATE.EditValue = arrCust[25];
-                txeUDATE.EditValue = arrCust[26];
+                txeEval.Text = arrCust[18]; ;
+                txeOthContract.Text = arrCust[19];
+                txeOthAddr1.Text = arrCust[20];
+                txeOthAddr2.Text = arrCust[21];
+                txeOthAddr3.Text = arrCust[22];
+                txeCREATE.Text = arrCust[23];
+                txeCDATE.Text = arrCust[24];
+                txeUPDATE.Text = arrCust[25];
+                txeUDATE.Text = arrCust[26];
             }
           
             
@@ -389,35 +389,36 @@ namespace M04
 
         private void gvCustomer_RowCellClick(object sender, RowCellClickEventArgs e)
         {
-            txeID.EditValue = gvCustomer.GetFocusedRowCellValue("No").ToString();
+            txeID.Text = gvCustomer.GetFocusedRowCellValue("No").ToString();
             lblStatus.Text = "* Edit Customer";
             lblStatus.ForeColor = Color.Red;
             glueCode.EditValue = gvCustomer.GetFocusedRowCellValue("Customer").ToString();
-            txeName.EditValue = gvCustomer.GetFocusedRowCellValue("CustomerName").ToString();
-            txeShortName.EditValue = gvCustomer.GetFocusedRowCellValue("ShortName").ToString();
-            txeContacts.EditValue = gvCustomer.GetFocusedRowCellValue("ContactName").ToString();
-            txeEmail.EditValue = gvCustomer.GetFocusedRowCellValue("Email").ToString();
-            txeAddr1.EditValue = gvCustomer.GetFocusedRowCellValue("Address1").ToString();
-            txeAddr2.EditValue = gvCustomer.GetFocusedRowCellValue("Address2").ToString();
-            txeAddr3.EditValue = gvCustomer.GetFocusedRowCellValue("Address3").ToString();
-            txeCountry.EditValue = gvCustomer.GetFocusedRowCellValue("Country").ToString();
-            txeTelNo.EditValue = gvCustomer.GetFocusedRowCellValue("TelephoneNo").ToString();
-            txeFaxNo.EditValue = gvCustomer.GetFocusedRowCellValue("FaxNo").ToString();
+            txeName.Text = gvCustomer.GetFocusedRowCellValue("CustomerName").ToString();
+            txeShortName.Text = gvCustomer.GetFocusedRowCellValue("ShortName").ToString();
+            txeContacts.Text = gvCustomer.GetFocusedRowCellValue("ContactName").ToString();
+            txeEmail.Text = gvCustomer.GetFocusedRowCellValue("Email").ToString();
+            txeAddr1.Text = gvCustomer.GetFocusedRowCellValue("Address1").ToString();
+            txeAddr2.Text = gvCustomer.GetFocusedRowCellValue("Address2").ToString();
+            txeAddr3.Text = gvCustomer.GetFocusedRowCellValue("Address3").ToString();
+            txeCountry.Text = gvCustomer.GetFocusedRowCellValue("Country").ToString();
+            txePostCode.Text = gvCustomer.GetFocusedRowCellValue("PostCode").ToString();
+            txeTelNo.Text = gvCustomer.GetFocusedRowCellValue("TelephoneNo").ToString();
+            txeFaxNo.Text = gvCustomer.GetFocusedRowCellValue("FaxNo").ToString();
             glueCustType.EditValue = gvCustomer.GetFocusedRowCellValue("CustomerType").ToString();
             glueSection.EditValue = gvCustomer.GetFocusedRowCellValue("SalesSection").ToString();
             glueTerm.EditValue = gvCustomer.GetFocusedRowCellValue("PaymentTerm").ToString();
             glueCurrency.EditValue = gvCustomer.GetFocusedRowCellValue("PaymentCurrency").ToString();
             glueCalendar.EditValue = gvCustomer.GetFocusedRowCellValue("CalendarNo").ToString();
-            txeEval.EditValue = gvCustomer.GetFocusedRowCellValue("CustomerEvalutionPoint").ToString();
-            txeOthContract.EditValue = gvCustomer.GetFocusedRowCellValue("OtherContactName").ToString();
-            txeOthAddr1.EditValue = gvCustomer.GetFocusedRowCellValue("OtherAddress1").ToString();
-            txeOthAddr2.EditValue = gvCustomer.GetFocusedRowCellValue("OtherAddress2").ToString();
-            txeOthAddr3.EditValue = gvCustomer.GetFocusedRowCellValue("OtherAddress3").ToString();
+            txeEval.Text = gvCustomer.GetFocusedRowCellValue("CustomerEvalutionPoint").ToString();
+            txeOthContract.Text = gvCustomer.GetFocusedRowCellValue("OtherContactName").ToString();
+            txeOthAddr1.Text = gvCustomer.GetFocusedRowCellValue("OtherAddress1").ToString();
+            txeOthAddr2.Text = gvCustomer.GetFocusedRowCellValue("OtherAddress2").ToString();
+            txeOthAddr3.Text = gvCustomer.GetFocusedRowCellValue("OtherAddress3").ToString();
 
-            txeCREATE.EditValue = gvCustomer.GetFocusedRowCellValue("CreatedBy").ToString();
-            txeCDATE.EditValue = gvCustomer.GetFocusedRowCellValue("CreatedDate").ToString();
-            txeUPDATE.EditValue = gvCustomer.GetFocusedRowCellValue("UpdatedBy").ToString();
-            txeUDATE.EditValue = gvCustomer.GetFocusedRowCellValue("UpdatedDate").ToString();
+            txeCREATE.Text = gvCustomer.GetFocusedRowCellValue("CreatedBy").ToString();
+            txeCDATE.Text = gvCustomer.GetFocusedRowCellValue("CreatedDate").ToString();
+            txeUPDATE.Text = gvCustomer.GetFocusedRowCellValue("UpdatedBy").ToString();
+            txeUDATE.Text = gvCustomer.GetFocusedRowCellValue("UpdatedDate").ToString();
         }
 
         private void bbiExcel_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -425,6 +426,151 @@ namespace M04
             string pathFile = new ObjSet.Folder(@"C:\MDS\Export\").GetPath() + "CustomerList_" + DateTime.Now.ToString("yyyyMMdd") + ".xlsx";
             gvCustomer.ExportToXlsx(pathFile);
             System.Diagnostics.Process.Start(pathFile);
+        }
+
+        private void txeName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txeShortName.Focus();
+            }
+        }
+
+        private void txeShortName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txeContacts.Focus();
+            }
+        }
+
+        private void txeContacts_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txeEmail.Focus();
+            }
+        }
+
+        private void txeEmail_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txeAddr1.Focus();
+            }
+        }
+
+        private void txeAddr1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txeAddr2.Focus();
+            }
+        }
+
+        private void txeAddr2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txeAddr3.Focus();
+            }
+        }
+
+        private void txeAddr3_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txeCountry.Focus();
+            }
+        }
+
+        private void txeCountry_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txePostCode.Focus();
+            }
+        }
+
+        private void txePostCode_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode==Keys.Enter)
+            {
+                txeTelNo.Focus();
+            }
+        }
+
+        private void txeTelNo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txeFaxNo.Focus();
+            }
+        }
+
+        private void txeFaxNo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                glueCustType.Focus();
+            }
+        }
+
+        private void glueCustType_EditValueChanged(object sender, EventArgs e)
+        {
+            glueSection.Focus();
+        }
+
+        private void glueSection_EditValueChanged(object sender, EventArgs e)
+        {
+            glueTerm.Focus();
+        }
+
+        private void glueTerm_EditValueChanged(object sender, EventArgs e)
+        {
+            glueCurrency.Focus();
+        }
+
+        private void glueCurrency_EditValueChanged(object sender, EventArgs e)
+        {
+            glueCalendar.Focus();
+        }
+
+        private void glueCalendar_EditValueChanged(object sender, EventArgs e)
+        {
+            txeEval.Focus();
+        }
+
+        private void txeEval_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txeOthContract.Focus();
+            }
+        }
+
+        private void txeOthContract_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txeOthAddr1.Focus();
+            }
+        }
+
+        private void txeOthAddr1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txeOthAddr2.Focus();
+            }
+        }
+
+        private void txeOthAddr2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txeOthAddr3.Focus();
+            }
         }
     }
 }
