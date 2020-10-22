@@ -69,7 +69,7 @@ namespace M04
             txeCDATE.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             txeUPDATE.Text = "0";
             txeUDATE.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-            glueCode.Focus();
+
         }
 
         private void LoadData()
@@ -181,9 +181,9 @@ namespace M04
                     StringBuilder sbSQL = new StringBuilder();
 
                     string strCREATE = "0";
-                    if (txeCREATE.Text.Trim() != "")
+                    if (txeCDATE.Text.Trim() != "")
                     {
-                        strCREATE = txeCREATE.Text.Trim();
+                        strCREATE = txeCDATE.Text.Trim();
                     }
 
                     string strUPDATE = "0";
@@ -230,16 +230,52 @@ namespace M04
         private void glueCode_EditValueChanged(object sender, EventArgs e)
         {
             txeName.Focus();
+            LoadCode(glueCode.Text);
         }
 
         private void glueCode_KeyDown(object sender, KeyEventArgs e)
         {
-            txeCountry.Text = gvCustomer.GetFocusedRowCellValue("Country").ToString();
+            if (e.KeyCode == Keys.Enter) 
+            {
+                txeName.Focus();
+            }
         }
 
         private void glueCode_LostFocus(object sender, EventArgs e)
         {
-            string strCODE = glueCode.Text.ToUpper().Trim();
+            string gCode = glueCode.Text.ToUpper().Trim();
+
+            if (glueCode.Text != "")
+            {
+                StringBuilder sbSQLx = new StringBuilder();
+                sbSQLx.Append("SELECT OIDCUST FROM Customer WHERE (Code=N'" + gCode + "') ");
+                string chkCode = new DBQuery(sbSQLx).getString();
+
+                if (chkCode == "")
+                {
+                    sbSQLx.Clear();
+                    sbSQLx.Append("SELECT Code, Name, ShortName ");
+                    sbSQLx.Append("FROM  Customer ");
+                    sbSQLx.Append("UNION ALL ");
+                    sbSQLx.Append("SELECT N'' AS Code, N'' AS Name, N'' AS ShortName ");
+                    sbSQLx.Append("UNION ALL ");
+                    sbSQLx.Append("SELECT N'" + gCode + "' AS Code, N'' AS Name, N'' AS ShortName ");
+                    sbSQLx.Append("ORDER BY Code, Name ");
+                    new ObjDevEx.setGridLookUpEdit(glueCode, sbSQLx, "Code", "Code").getData(true);
+
+                    if (gCode != "")
+                    {
+                        glueCode.Text = gCode;
+                    }
+                }
+
+            }
+
+        }
+
+        private void LoadCode(string strCODE)
+        {
+            strCODE = strCODE.ToUpper().Trim();
             txeID.Text = "";
             lblStatus.Text = "* New Customer";
             lblStatus.ForeColor = Color.Green;
@@ -268,30 +304,6 @@ namespace M04
             txeCDATE.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             txeUPDATE.Text = "0";
             txeUDATE.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-
-            string gCode = glueCode.Text.ToUpper().Trim();
-
-            if (glueCode.Text != "")
-            {
-                StringBuilder sbSQLx = new StringBuilder();
-                sbSQLx.Append("SELECT OIDCUST FROM Customer WHERE (Code=N'" + gCode + "') ");
-                string chkCode = new DBQuery(sbSQLx).getString();
-
-                if (chkCode == "")
-                {
-                    sbSQLx.Clear();
-                    sbSQLx.Append("SELECT Code, Name, ShortName ");
-                    sbSQLx.Append("FROM  Customer ");
-                    sbSQLx.Append("UNION ALL ");
-                    sbSQLx.Append("SELECT N'' AS Code, N'' AS Name, N'' AS ShortName ");
-                    sbSQLx.Append("UNION ALL ");
-                    sbSQLx.Append("SELECT N'" + gCode + "' AS Code, N'' AS Name, N'' AS ShortName ");
-                    sbSQLx.Append("ORDER BY Code, Name ");
-                    new ObjDevEx.setGridLookUpEdit(glueCode, sbSQLx, "Code", "Code").getData(true);
-                    glueCode.EditValue = gCode;
-                }
-            }
-
 
             StringBuilder sbSQL = new StringBuilder();
             sbSQL.Append("SELECT OIDCUST, Code, Name, ShortName, Contacts, Email, Address1, Address2, Address3, Country, PostCode, TelephoneNo, FaxNo, CustomerType, SalesSection, PaymentTerm, PaymentCurrency, CalendarNo, ");
@@ -330,8 +342,8 @@ namespace M04
                 txeUPDATE.Text = arrCust[25];
                 txeUDATE.Text = arrCust[26];
             }
-          
-            
+
+
             //Check new customer or edit customer
             sbSQL.Clear();
             sbSQL.Append("SELECT OIDCUST FROM Customer WHERE (OIDCUST = '" + txeID.EditValue.ToString() + "') ");
@@ -346,45 +358,6 @@ namespace M04
                 lblStatus.Text = "* Edit Customer";
                 lblStatus.ForeColor = Color.Red;
             }
-
-     
-        }
-
-        private void glueCode_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
-        {
-            
-        }
-
-        private void glueCode_ProcessNewValue(object sender, DevExpress.XtraEditors.Controls.ProcessNewValueEventArgs e)
-        {
-
-        }
-
-        private void glueCode_Leave(object sender, EventArgs e)
-        {
-            ////glueCode.Text = glueCode.Text.ToUpper().Trim();
-            //string gCode = glueCode.Text.ToUpper().Trim();
-         
-            //if (glueCode.Text != "")
-            //{
-            //    StringBuilder sbSQL = new StringBuilder();
-            //    sbSQL.Append("SELECT OIDCUST FROM Customer WHERE (Code=N'" + gCode + "') ");
-            //    string chkCode = new DBQuery(sbSQL).getString();
-              
-            //    if (chkCode == "")
-            //    {
-            //        sbSQL.Clear();
-            //        sbSQL.Append("SELECT Code, Name, ShortName ");
-            //        sbSQL.Append("FROM  Customer ");
-            //        sbSQL.Append("UNION ALL ");
-            //        sbSQL.Append("SELECT N'' AS Code, N'' AS Name, N'' AS ShortName ");
-            //        sbSQL.Append("UNION ALL ");
-            //        sbSQL.Append("SELECT N'" + gCode + "' AS Code, N'' AS Name, N'' AS ShortName ");
-            //        sbSQL.Append("ORDER BY Code, Name ");
-            //        new ObjDevEx.setGridLookUpEdit(glueCode, sbSQL, "Code", "Code").getData(true);
-            //        glueCode.EditValue = gCode;
-            //    }
-            //}
         }
 
         private void gvCustomer_RowCellClick(object sender, RowCellClickEventArgs e)
@@ -570,6 +543,30 @@ namespace M04
             if (e.KeyCode == Keys.Enter)
             {
                 txeOthAddr3.Focus();
+            }
+        }
+
+        private void gvCustomer_RowStyle(object sender, RowStyleEventArgs e)
+        {
+            if (sender is GridView)
+            {
+                GridView gView = (GridView)sender;
+                if (!gView.IsValidRowHandle(e.RowHandle)) return;
+                int parent = gView.GetParentRowHandle(e.RowHandle);
+                if (gView.IsGroupRow(parent))
+                {
+                    for (int i = 0; i < gView.GetChildRowCount(parent); i++)
+                    {
+                        if (gView.GetChildRowHandle(parent, i) == e.RowHandle)
+                        {
+                            e.Appearance.BackColor = i % 2 == 0 ? Color.AliceBlue : Color.White;
+                        }
+                    }
+                }
+                else
+                {
+                    e.Appearance.BackColor = e.RowHandle % 2 == 0 ? Color.AliceBlue : Color.White;
+                }
             }
         }
     }
