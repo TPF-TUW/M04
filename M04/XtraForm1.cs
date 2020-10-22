@@ -561,7 +561,7 @@ namespace M04
                         {
                             e.Appearance.BackColor = i % 2 == 0 ? Color.AliceBlue : Color.White;
                         }
-                    }
+                    } 
                 }
                 else
                 {
