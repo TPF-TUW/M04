@@ -181,9 +181,9 @@ namespace M04
                     StringBuilder sbSQL = new StringBuilder();
 
                     string strCREATE = "0";
-                    if (txeCREATE.Text.Trim() != "")
+                    if (txeCDATE.Text.Trim() != "")
                     {
-                        strCREATE = txeCREATE.Text.Trim();
+                        strCREATE = txeCDATE.Text.Trim();
                     }
 
                     string strUPDATE = "0";
@@ -570,6 +570,30 @@ namespace M04
             if (e.KeyCode == Keys.Enter)
             {
                 txeOthAddr3.Focus();
+            }
+        }
+
+        private void gvCustomer_RowStyle(object sender, RowStyleEventArgs e)
+        {
+            if (sender is GridView)
+            {
+                GridView gView = (GridView)sender;
+                if (!gView.IsValidRowHandle(e.RowHandle)) return;
+                int parent = gView.GetParentRowHandle(e.RowHandle);
+                if (gView.IsGroupRow(parent))
+                {
+                    for (int i = 0; i < gView.GetChildRowCount(parent); i++)
+                    {
+                        if (gView.GetChildRowHandle(parent, i) == e.RowHandle)
+                        {
+                            e.Appearance.BackColor = i % 2 == 0 ? Color.AliceBlue : Color.White;
+                        }
+                    }
+                }
+                else
+                {
+                    e.Appearance.BackColor = e.RowHandle % 2 == 0 ? Color.AliceBlue : Color.White;
+                }
             }
         }
     }

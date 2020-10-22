@@ -85,8 +85,8 @@
             this.txeAddr1 = new DevExpress.XtraEditors.TextEdit();
             this.txeEmail = new DevExpress.XtraEditors.TextEdit();
             this.txeContacts = new DevExpress.XtraEditors.TextEdit();
-            this.txeCREATE = new DevExpress.XtraEditors.TextEdit();
             this.txeCDATE = new DevExpress.XtraEditors.TextEdit();
+            this.txeCREATE = new DevExpress.XtraEditors.TextEdit();
             this.gcCustomer = new DevExpress.XtraGrid.GridControl();
             this.gvCustomer = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.txeID = new DevExpress.XtraEditors.TextEdit();
@@ -165,8 +165,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txeAddr1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txeEmail.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txeContacts.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txeCREATE.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txeCDATE.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txeCREATE.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcCustomer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvCustomer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txeID.Properties)).BeginInit();
@@ -436,8 +436,8 @@
             this.layoutControl1.Controls.Add(this.txeAddr1);
             this.layoutControl1.Controls.Add(this.txeEmail);
             this.layoutControl1.Controls.Add(this.txeContacts);
-            this.layoutControl1.Controls.Add(this.txeCREATE);
             this.layoutControl1.Controls.Add(this.txeCDATE);
+            this.layoutControl1.Controls.Add(this.txeCREATE);
             this.layoutControl1.Controls.Add(this.gcCustomer);
             this.layoutControl1.Controls.Add(this.txeID);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -790,25 +790,25 @@
             this.txeContacts.TabIndex = 3;
             this.txeContacts.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txeContacts_KeyDown);
             // 
-            // txeCREATE
-            // 
-            this.txeCREATE.Location = new System.Drawing.Point(899, 196);
-            this.txeCREATE.MenuManager = this.ribbonControl;
-            this.txeCREATE.Name = "txeCREATE";
-            this.txeCREATE.Properties.ReadOnly = true;
-            this.txeCREATE.Size = new System.Drawing.Size(91, 20);
-            this.txeCREATE.StyleController = this.layoutControl1;
-            this.txeCREATE.TabIndex = 22;
-            // 
             // txeCDATE
             // 
-            this.txeCDATE.Location = new System.Drawing.Point(899, 172);
+            this.txeCDATE.Location = new System.Drawing.Point(899, 196);
             this.txeCDATE.MenuManager = this.ribbonControl;
             this.txeCDATE.Name = "txeCDATE";
             this.txeCDATE.Properties.ReadOnly = true;
             this.txeCDATE.Size = new System.Drawing.Size(91, 20);
             this.txeCDATE.StyleController = this.layoutControl1;
-            this.txeCDATE.TabIndex = 21;
+            this.txeCDATE.TabIndex = 22;
+            // 
+            // txeCREATE
+            // 
+            this.txeCREATE.Location = new System.Drawing.Point(899, 172);
+            this.txeCREATE.MenuManager = this.ribbonControl;
+            this.txeCREATE.Name = "txeCREATE";
+            this.txeCREATE.Properties.ReadOnly = true;
+            this.txeCREATE.Size = new System.Drawing.Size(91, 20);
+            this.txeCREATE.StyleController = this.layoutControl1;
+            this.txeCREATE.TabIndex = 21;
             // 
             // gcCustomer
             // 
@@ -830,6 +830,7 @@
             this.gvCustomer.OptionsView.ShowAutoFilterRow = true;
             this.gvCustomer.OptionsView.ShowGroupPanel = false;
             this.gvCustomer.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gvCustomer_RowCellClick);
+            this.gvCustomer.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gvCustomer_RowStyle);
             // 
             // txeID
             // 
@@ -1232,7 +1233,7 @@
             // 
             // layoutControlItem3
             // 
-            this.layoutControlItem3.Control = this.txeCDATE;
+            this.layoutControlItem3.Control = this.txeCREATE;
             this.layoutControlItem3.Location = new System.Drawing.Point(755, 168);
             this.layoutControlItem3.Name = "layoutControlItem3";
             this.layoutControlItem3.Size = new System.Drawing.Size(235, 24);
@@ -1250,7 +1251,7 @@
             // 
             // layoutControlItem4
             // 
-            this.layoutControlItem4.Control = this.txeCREATE;
+            this.layoutControlItem4.Control = this.txeCDATE;
             this.layoutControlItem4.Location = new System.Drawing.Point(755, 192);
             this.layoutControlItem4.Name = "layoutControlItem4";
             this.layoutControlItem4.Size = new System.Drawing.Size(235, 24);
@@ -1304,8 +1305,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txeAddr1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txeEmail.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txeContacts.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txeCREATE.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txeCDATE.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txeCREATE.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcCustomer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvCustomer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txeID.Properties)).EndInit();
@@ -1383,8 +1384,8 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private DevExpress.XtraGrid.GridControl gcCustomer;
         private DevExpress.XtraGrid.Views.Grid.GridView gvCustomer;
-        private DevExpress.XtraEditors.TextEdit txeCREATE;
         private DevExpress.XtraEditors.TextEdit txeCDATE;
+        private DevExpress.XtraEditors.TextEdit txeCREATE;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         private DevExpress.XtraEditors.TextEdit txeOthAddr3;
