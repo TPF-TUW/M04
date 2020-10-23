@@ -181,9 +181,9 @@ namespace M04
                     StringBuilder sbSQL = new StringBuilder();
 
                     string strCREATE = "0";
-                    if (txeCDATE.Text.Trim() != "")
+                    if (txeCREATE.Text.Trim() != "")
                     {
-                        strCREATE = txeCDATE.Text.Trim();
+                        strCREATE = txeCREATE.Text.Trim();
                     }
 
                     string strUPDATE = "0";
