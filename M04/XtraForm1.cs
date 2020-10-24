@@ -248,7 +248,7 @@ namespace M04
             if (glueCode.Text != "")
             {
                 StringBuilder sbSQLx = new StringBuilder();
-                sbSQLx.Append("SELECT OIDCUST FROM Customer WHERE (Code=N'" + gCode + "') ");
+                sbSQLx.Append("SELECT OIDCUST FROM Customer WHERE (Code=N'" + gCode.Replace("'", "''") + "') ");
                 string chkCode = new DBQuery(sbSQLx).getString();
 
                 if (chkCode == "")
@@ -259,7 +259,7 @@ namespace M04
                     sbSQLx.Append("UNION ALL ");
                     sbSQLx.Append("SELECT N'' AS Code, N'' AS Name, N'' AS ShortName ");
                     sbSQLx.Append("UNION ALL ");
-                    sbSQLx.Append("SELECT N'" + gCode + "' AS Code, N'' AS Name, N'' AS ShortName ");
+                    sbSQLx.Append("SELECT N'" + gCode.Replace("'", "''") + "' AS Code, N'' AS Name, N'' AS ShortName ");
                     sbSQLx.Append("ORDER BY Code, Name ");
                     new ObjDevEx.setGridLookUpEdit(glueCode, sbSQLx, "Code", "Code").getData(true);
 
