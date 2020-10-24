@@ -135,7 +135,7 @@ namespace M04
             sbSQL.Append("       OtherAddress1, OtherAddress2, OtherAddress3, CreatedBy, CreatedDate, UpdatedBy, UpdatedDate ");
             sbSQL.Append("FROM Customer ");
             sbSQL.Append("ORDER BY CustomerType, Code ");
-            new ObjDevEx.setGridControl(gcCustomer, gvCustomer, sbSQL).getData(false, false, true, true);
+            new ObjDevEx.setGridControl(gcCustomer, gvCustomer, sbSQL).getData(false, false, false, true);
 
 
 
