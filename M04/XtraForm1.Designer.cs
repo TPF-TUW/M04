@@ -486,6 +486,9 @@
             this.glueCode.Size = new System.Drawing.Size(254, 20);
             this.glueCode.StyleController = this.layoutControl1;
             this.glueCode.TabIndex = 0;
+            this.glueCode.ProcessNewValue += new DevExpress.XtraEditors.Controls.ProcessNewValueEventHandler(this.glueCode_ProcessNewValue);
+            this.glueCode.CloseUp += new DevExpress.XtraEditors.Controls.CloseUpEventHandler(this.glueCode_CloseUp);
+            this.glueCode.Closed += new DevExpress.XtraEditors.Controls.ClosedEventHandler(this.glueCode_Closed);
             this.glueCode.EditValueChanged += new System.EventHandler(this.glueCode_EditValueChanged);
             this.glueCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.glueCode_KeyDown);
             this.glueCode.LostFocus += new System.EventHandler(this.glueCode_LostFocus);

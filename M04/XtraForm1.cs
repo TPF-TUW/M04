@@ -14,6 +14,7 @@ namespace M04
     public partial class XtraForm1 : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         private Functionality.Function FUNC = new Functionality.Function();
+        private string selCode = "";
         public XtraForm1()
         {
             InitializeComponent();
@@ -35,6 +36,24 @@ namespace M04
 
         private void XtraForm1_Load(object sender, EventArgs e)
         {
+  
+            //List<Product> products = new List<Product> {
+            //    new Product(){ ProductName="Chang" },
+            //    new Product(){ ProductName="Ipoh Coffee" },
+            //    new Product(){ ProductName="Ravioli Angelo" },
+            //    new Product(){ ProductName="Filo Mix" },
+            //    new Product(){ ProductName="Tunnbröd" },
+            //    new Product(){ ProductName="Konbu" },
+            //    new Product(){ ProductName="Boston Crab Meat" }
+            //};
+
+            //glueCode.Properties.DataSource = products;
+            glueCode.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            glueCode.Properties.AcceptEditorTextAsNewValue = DevExpress.Utils.DefaultBoolean.True;
+            //glueCode.Properties.ValueMember = "ProductName";
+            //glueCode.Properties.DisplayMember = glueCode.Properties.ValueMember;
+            //glueCode.ProcessNewValue += glueCode_ProcessNewValue;
+
             bbiNew.PerformClick();
         }
 
@@ -236,8 +255,21 @@ namespace M04
 
         private void glueCode_EditValueChanged(object sender, EventArgs e)
         {
-            txeName.Focus();
-            LoadCode(glueCode.Text);
+            //txeName.Focus();
+            //LoadCode(glueCode.Text);
+        }
+
+
+        private void glueCodeX_EditValueChanged(object sender, EventArgs e)
+        {
+            //Display lookup editor's current value.
+            //LookUpEditBase lookupEditor = sender as LookUpEditBase;
+            //if (lookupEditor == null) return;
+            
+            //if (lookupEditor.EditValue == null)
+            //    layoutControlItem17.Text = "Current EditValue: null";
+            //else
+            //    layoutControlItem17.Text = "Current EditValue: " + lookupEditor.EditValue.ToString();
         }
 
         private void glueCode_KeyDown(object sender, KeyEventArgs e)
@@ -250,34 +282,13 @@ namespace M04
 
         private void glueCode_LostFocus(object sender, EventArgs e)
         {
-            string gCode = glueCode.Text.ToUpper().Trim();
-
-            if (glueCode.Text != "")
+            if (glueCode.Text.Trim() != "" && glueCode.Text.ToUpper().Trim() != selCode)
             {
-                StringBuilder sbSQLx = new StringBuilder();
-                sbSQLx.Append("SELECT OIDCUST FROM Customer WHERE (Code=N'" + gCode.Replace("'", "''") + "') ");
-                string chkCode = new DBQuery(sbSQLx).getString();
-
-                if (chkCode == "")
-                {
-                    sbSQLx.Clear();
-                    sbSQLx.Append("SELECT Code, Name, ShortName ");
-                    sbSQLx.Append("FROM  Customer ");
-                    sbSQLx.Append("UNION ALL ");
-                    sbSQLx.Append("SELECT N'' AS Code, N'' AS Name, N'' AS ShortName ");
-                    sbSQLx.Append("UNION ALL ");
-                    sbSQLx.Append("SELECT N'" + gCode.Replace("'", "''") + "' AS Code, N'' AS Name, N'' AS ShortName ");
-                    sbSQLx.Append("ORDER BY Code, Name ");
-                    new ObjDevEx.setGridLookUpEdit(glueCode, sbSQLx, "Code", "Code").getData(true);
-
-                    if (gCode != "")
-                    {
-                        glueCode.Text = gCode;
-                    }
-                }
-
+                glueCode.Text = glueCode.Text.ToUpper().Trim();
+                selCode = glueCode.Text;
+                LoadCode(glueCode.Text);  
             }
-
+            
         }
 
         private void LoadCode(string strCODE)
@@ -365,6 +376,7 @@ namespace M04
                 lblStatus.Text = "* Edit Customer";
                 lblStatus.ForeColor = Color.Red;
             }
+            txeName.Focus();
         }
 
         private void gvCustomer_RowCellClick(object sender, RowCellClickEventArgs e)
@@ -575,6 +587,28 @@ namespace M04
                     e.Appearance.BackColor = e.RowHandle % 2 == 0 ? Color.AliceBlue : Color.White;
                 }
             }
+        }
+
+        private void glueCode_ProcessNewValue(object sender, DevExpress.XtraEditors.Controls.ProcessNewValueEventArgs e)
+        {
+            GridLookUpEdit gridLookup = sender as GridLookUpEdit;
+            if (e.DisplayValue == null) return;
+            string newValue = e.DisplayValue.ToString();
+            if (newValue == String.Empty) return;
+        }
+
+        private void glueCode_CloseUp(object sender, DevExpress.XtraEditors.Controls.CloseUpEventArgs e)
+        {
+            
+        }
+
+        private void glueCode_Closed(object sender, DevExpress.XtraEditors.Controls.ClosedEventArgs e)
+        {
+            //glueCode.Text = glueCode.Text.ToUpper().Trim();
+            //LoadCode(glueCode.Text);
+           // MessageBox.Show(glueCode.Text);
+            glueCode.Focus();
+            txeName.Focus();
         }
     }
 }
