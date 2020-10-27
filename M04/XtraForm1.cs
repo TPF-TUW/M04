@@ -36,23 +36,8 @@ namespace M04
 
         private void XtraForm1_Load(object sender, EventArgs e)
         {
-  
-            //List<Product> products = new List<Product> {
-            //    new Product(){ ProductName="Chang" },
-            //    new Product(){ ProductName="Ipoh Coffee" },
-            //    new Product(){ ProductName="Ravioli Angelo" },
-            //    new Product(){ ProductName="Filo Mix" },
-            //    new Product(){ ProductName="Tunnbröd" },
-            //    new Product(){ ProductName="Konbu" },
-            //    new Product(){ ProductName="Boston Crab Meat" }
-            //};
-
-            //glueCode.Properties.DataSource = products;
             glueCode.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             glueCode.Properties.AcceptEditorTextAsNewValue = DevExpress.Utils.DefaultBoolean.True;
-            //glueCode.Properties.ValueMember = "ProductName";
-            //glueCode.Properties.DisplayMember = glueCode.Properties.ValueMember;
-            //glueCode.ProcessNewValue += glueCode_ProcessNewValue;
 
             bbiNew.PerformClick();
         }
@@ -88,7 +73,7 @@ namespace M04
             txeCDATE.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             txeUPDATE.Text = "0";
             txeUDATE.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-
+            selCode = "";
         }
 
         private void LoadData()
@@ -144,8 +129,6 @@ namespace M04
             sbSQL.Append("FROM Customer ");
             sbSQL.Append("ORDER BY CustomerType, Code ");
             new ObjDevEx.setGridControl(gcCustomer, gvCustomer, sbSQL).getData(false, false, false, true);
-
-
 
         }
 
@@ -258,18 +241,6 @@ namespace M04
         }
 
 
-        private void glueCodeX_EditValueChanged(object sender, EventArgs e)
-        {
-            //Display lookup editor's current value.
-            //LookUpEditBase lookupEditor = sender as LookUpEditBase;
-            //if (lookupEditor == null) return;
-            
-            //if (lookupEditor.EditValue == null)
-            //    layoutControlItem17.Text = "Current EditValue: null";
-            //else
-            //    layoutControlItem17.Text = "Current EditValue: " + lookupEditor.EditValue.ToString();
-        }
-
         private void glueCode_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter) 
@@ -320,6 +291,8 @@ namespace M04
             txeCDATE.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             txeUPDATE.Text = "0";
             txeUDATE.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+            selCode = "";
+            txeName.Focus();
 
             StringBuilder sbSQL = new StringBuilder();
             sbSQL.Append("SELECT OIDCUST, Code, Name, ShortName, Contacts, Email, Address1, Address2, Address3, Country, PostCode, TelephoneNo, FaxNo, CustomerType, SalesSection, PaymentTerm, PaymentCurrency, CalendarNo, ");
@@ -602,9 +575,6 @@ namespace M04
 
         private void glueCode_Closed(object sender, DevExpress.XtraEditors.Controls.ClosedEventArgs e)
         {
-            //glueCode.Text = glueCode.Text.ToUpper().Trim();
-            //LoadCode(glueCode.Text);
-           // MessageBox.Show(glueCode.Text);
             glueCode.Focus();
             txeName.Focus();
         }
