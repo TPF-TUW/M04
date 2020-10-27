@@ -96,8 +96,6 @@ namespace M04
             StringBuilder sbSQL = new StringBuilder();
             sbSQL.Append("SELECT Code, Name, ShortName ");
             sbSQL.Append("FROM  Customer ");
-            sbSQL.Append("UNION ALL ");
-            sbSQL.Append("SELECT N'' AS Code, N'' AS Name, N'' AS ShortName ");
             sbSQL.Append("ORDER BY Code, Name ");
             new ObjDevEx.setGridLookUpEdit(glueCode, sbSQL, "Code", "Code").getData(true);
 
