@@ -41,7 +41,7 @@ namespace M04
         private void NewData()
         {
             txeID.EditValue = new DBQuery("SELECT CASE WHEN ISNULL(MAX(OIDCUST), '') = '' THEN 1 ELSE MAX(OIDCUST) + 1 END AS NewNo FROM Customer").getString();
-            lblStatus.Text = "* New Customer";
+            lblStatus.Text = "* Add Customer";
             lblStatus.ForeColor = Color.Green;
             glueCode.EditValue = "";
             txeName.Text = "";
@@ -183,7 +183,7 @@ namespace M04
                         strUPDATE = txeUPDATE.Text.Trim();
                     }
 
-                    if (lblStatus.Text == "* New Customer")
+                    if (lblStatus.Text == "* Add Customer")
                     {
                         sbSQL.Append("  INSERT INTO Customer(Code, Name, ShortName, Contacts, Email, Address1, Address2, Address3, Country, PostCode, TelephoneNo, FaxNo, CustomerType, SalesSection, PaymentTerm, PaymentCurrency, CalendarNo, EvalutionPoint, OtherContact, OtherAddress1, OtherAddress2, OtherAddress3, CreatedBy, CreatedDate, UpdatedBy, UpdatedDate) ");
                         sbSQL.Append("  VALUES(N'" + glueCode.Text.Trim().Replace("'", "''") + "', N'" + txeName.Text.Trim().Replace("'", "''") + "', N'" + txeShortName.Text.Trim().Replace("'", "''") + "', N'" + txeContacts.Text.Trim().Replace("'", "''") + "', N'" + txeEmail.Text.Trim() + "', N'" + txeAddr1.Text.Trim() + "', N'" + txeAddr2.Text.Trim() + "', N'" + txeAddr3.Text.Trim() + "', N'" + txeCountry.Text.Trim() + "', N'" + txePostCode.Text.Trim() + "', N'" + txeTelNo.Text.Trim() + "', ");
@@ -284,7 +284,7 @@ namespace M04
         {
             strCODE = strCODE.ToUpper().Trim();
             txeID.Text = "";
-            lblStatus.Text = "* New Customer";
+            lblStatus.Text = "* Add Customer";
             lblStatus.ForeColor = Color.Green;
             txeName.Text = "";
             txeShortName.Text = "";
@@ -357,7 +357,7 @@ namespace M04
             string strCHKID = new DBQuery(sbSQL).getString();
             if (strCHKID == "")
             {
-                lblStatus.Text = "* New Customer";
+                lblStatus.Text = "* Add Customer";
                 lblStatus.ForeColor = Color.Green;
             }
             else
