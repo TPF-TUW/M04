@@ -112,21 +112,12 @@ namespace M04
 
             //Calendar No.
             sbSQL.Clear();
-            sbSQL.Append("SELECT OIDCALENDAR AS No, 'Thai Parfun' AS CompanyType, 'Thai Parfun' AS CompanyName, Year  ");
-            sbSQL.Append("FROM CalendarMaster  ");
-            sbSQL.Append("WHERE CompanyType = 0  ");
-            sbSQL.Append("UNION ALL  ");
-            sbSQL.Append("SELECT OIDCALENDAR AS No, 'Customer' AS CompanyType, CompanyName, Year  ");
+            sbSQL.Append("SELECT CompanyName AS CustomerName, Year, OIDCALENDAR AS No  ");
             sbSQL.Append("FROM CalendarMaster A  ");
             sbSQL.Append("CROSS APPLY(SELECT ShortName AS CompanyName FROM Customer WHERE OIDCUST = A.OIDCompany) B  ");
             sbSQL.Append("WHERE CompanyType = 1  ");
-            sbSQL.Append("UNION ALL  ");
-            sbSQL.Append("SELECT OIDCALENDAR AS No, 'Vendor' AS CompanyType, CompanyName, Year  ");
-            sbSQL.Append("FROM CalendarMaster C  ");
-            sbSQL.Append("CROSS APPLY(SELECT Name AS CompanyName FROM Vendor WHERE OIDVEND = C.OIDCompany) D  ");
-            sbSQL.Append("WHERE CompanyType = 2  ");
-            sbSQL.Append("ORDER BY Year DESC, CompanyType, CompanyName, OIDCALENDAR  ");
-            new ObjDevEx.setGridLookUpEdit(glueCalendar, sbSQL, "CompanyName", "No").getData(true);
+            sbSQL.Append("ORDER BY Year DESC, CompanyName, OIDCALENDAR  ");
+            new ObjDevEx.setGridLookUpEdit(glueCalendar, sbSQL, "CustomerName", "No").getData(true);
 
             //All Customer
             sbSQL.Clear();
