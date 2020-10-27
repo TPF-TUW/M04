@@ -255,7 +255,8 @@ namespace M04
             {
                 glueCode.Text = glueCode.Text.ToUpper().Trim();
                 selCode = glueCode.Text;
-                LoadCode(glueCode.Text);  
+                LoadCode(glueCode.Text);
+                //MessageBox.Show(glueCode.Text);
             }
             
         }
@@ -291,7 +292,7 @@ namespace M04
             txeCDATE.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             txeUPDATE.Text = "0";
             txeUDATE.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-            selCode = "";
+            //selCode = "";
             txeName.Focus();
 
             StringBuilder sbSQL = new StringBuilder();
