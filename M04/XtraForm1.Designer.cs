@@ -827,6 +827,8 @@
             this.gvCustomer.Name = "gvCustomer";
             this.gvCustomer.OptionsBehavior.Editable = false;
             this.gvCustomer.OptionsBehavior.ReadOnly = true;
+            this.gvCustomer.OptionsView.EnableAppearanceEvenRow = true;
+            this.gvCustomer.OptionsView.EnableAppearanceOddRow = true;
             this.gvCustomer.OptionsView.ShowAutoFilterRow = true;
             this.gvCustomer.OptionsView.ShowGroupPanel = false;
             this.gvCustomer.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gvCustomer_RowCellClick);
