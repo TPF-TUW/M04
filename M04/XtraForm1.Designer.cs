@@ -831,6 +831,7 @@
             this.gvCustomer.OptionsView.EnableAppearanceOddRow = true;
             this.gvCustomer.OptionsView.ShowAutoFilterRow = true;
             this.gvCustomer.OptionsView.ShowGroupPanel = false;
+            this.gvCustomer.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gvCustomer_RowClick);
             this.gvCustomer.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gvCustomer_RowCellClick);
             this.gvCustomer.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gvCustomer_RowStyle);
             // 

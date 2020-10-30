@@ -353,36 +353,7 @@ namespace M04
 
         private void gvCustomer_RowCellClick(object sender, RowCellClickEventArgs e)
         {
-            txeID.Text = gvCustomer.GetFocusedRowCellValue("No").ToString();
-            lblStatus.Text = "* Edit Customer";
-            lblStatus.ForeColor = Color.Red;
-            glueCode.EditValue = gvCustomer.GetFocusedRowCellValue("Customer").ToString();
-            txeName.Text = gvCustomer.GetFocusedRowCellValue("CustomerName").ToString();
-            txeShortName.Text = gvCustomer.GetFocusedRowCellValue("ShortName").ToString();
-            txeContacts.Text = gvCustomer.GetFocusedRowCellValue("ContactName").ToString();
-            txeEmail.Text = gvCustomer.GetFocusedRowCellValue("Email").ToString();
-            txeAddr1.Text = gvCustomer.GetFocusedRowCellValue("Address1").ToString();
-            txeAddr2.Text = gvCustomer.GetFocusedRowCellValue("Address2").ToString();
-            txeAddr3.Text = gvCustomer.GetFocusedRowCellValue("Address3").ToString();
-            txeCountry.Text = gvCustomer.GetFocusedRowCellValue("Country").ToString();
-            txePostCode.Text = gvCustomer.GetFocusedRowCellValue("PostCode").ToString();
-            txeTelNo.Text = gvCustomer.GetFocusedRowCellValue("TelephoneNo").ToString();
-            txeFaxNo.Text = gvCustomer.GetFocusedRowCellValue("FaxNo").ToString();
-            glueCustType.EditValue = gvCustomer.GetFocusedRowCellValue("CustomerType").ToString();
-            glueSection.EditValue = gvCustomer.GetFocusedRowCellValue("SalesSection").ToString();
-            glueTerm.EditValue = gvCustomer.GetFocusedRowCellValue("PaymentTerm").ToString();
-            glueCurrency.EditValue = gvCustomer.GetFocusedRowCellValue("PaymentCurrency").ToString();
-            glueCalendar.EditValue = gvCustomer.GetFocusedRowCellValue("CalendarNo").ToString();
-            txeEval.Text = gvCustomer.GetFocusedRowCellValue("CustomerEvalutionPoint").ToString();
-            txeOthContract.Text = gvCustomer.GetFocusedRowCellValue("OtherContactName").ToString();
-            txeOthAddr1.Text = gvCustomer.GetFocusedRowCellValue("OtherAddress1").ToString();
-            txeOthAddr2.Text = gvCustomer.GetFocusedRowCellValue("OtherAddress2").ToString();
-            txeOthAddr3.Text = gvCustomer.GetFocusedRowCellValue("OtherAddress3").ToString();
-
-            txeCREATE.Text = gvCustomer.GetFocusedRowCellValue("CreatedBy").ToString();
-            txeCDATE.Text = gvCustomer.GetFocusedRowCellValue("CreatedDate").ToString();
-            txeUPDATE.Text = gvCustomer.GetFocusedRowCellValue("UpdatedBy").ToString();
-            txeUDATE.Text = gvCustomer.GetFocusedRowCellValue("UpdatedDate").ToString();
+            
         }
 
         private void bbiExcel_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -559,6 +530,40 @@ namespace M04
         {
             glueCode.Focus();
             txeName.Focus();
+        }
+
+        private void gvCustomer_RowClick(object sender, RowClickEventArgs e)
+        {
+            txeID.Text = gvCustomer.GetFocusedRowCellValue("No").ToString();
+            lblStatus.Text = "* Edit Customer";
+            lblStatus.ForeColor = Color.Red;
+            glueCode.EditValue = gvCustomer.GetFocusedRowCellValue("Customer").ToString();
+            txeName.Text = gvCustomer.GetFocusedRowCellValue("CustomerName").ToString();
+            txeShortName.Text = gvCustomer.GetFocusedRowCellValue("ShortName").ToString();
+            txeContacts.Text = gvCustomer.GetFocusedRowCellValue("ContactName").ToString();
+            txeEmail.Text = gvCustomer.GetFocusedRowCellValue("Email").ToString();
+            txeAddr1.Text = gvCustomer.GetFocusedRowCellValue("Address1").ToString();
+            txeAddr2.Text = gvCustomer.GetFocusedRowCellValue("Address2").ToString();
+            txeAddr3.Text = gvCustomer.GetFocusedRowCellValue("Address3").ToString();
+            txeCountry.Text = gvCustomer.GetFocusedRowCellValue("Country").ToString();
+            txePostCode.Text = gvCustomer.GetFocusedRowCellValue("PostCode").ToString();
+            txeTelNo.Text = gvCustomer.GetFocusedRowCellValue("TelephoneNo").ToString();
+            txeFaxNo.Text = gvCustomer.GetFocusedRowCellValue("FaxNo").ToString();
+            glueCustType.EditValue = gvCustomer.GetFocusedRowCellValue("CustomerType").ToString();
+            glueSection.EditValue = gvCustomer.GetFocusedRowCellValue("SalesSection").ToString();
+            glueTerm.EditValue = gvCustomer.GetFocusedRowCellValue("PaymentTerm").ToString();
+            glueCurrency.EditValue = gvCustomer.GetFocusedRowCellValue("PaymentCurrency").ToString();
+            glueCalendar.EditValue = gvCustomer.GetFocusedRowCellValue("CalendarNo").ToString();
+            txeEval.Text = gvCustomer.GetFocusedRowCellValue("CustomerEvalutionPoint").ToString();
+            txeOthContract.Text = gvCustomer.GetFocusedRowCellValue("OtherContactName").ToString();
+            txeOthAddr1.Text = gvCustomer.GetFocusedRowCellValue("OtherAddress1").ToString();
+            txeOthAddr2.Text = gvCustomer.GetFocusedRowCellValue("OtherAddress2").ToString();
+            txeOthAddr3.Text = gvCustomer.GetFocusedRowCellValue("OtherAddress3").ToString();
+
+            txeCREATE.Text = gvCustomer.GetFocusedRowCellValue("CreatedBy").ToString();
+            txeCDATE.Text = gvCustomer.GetFocusedRowCellValue("CreatedDate").ToString();
+            txeUPDATE.Text = gvCustomer.GetFocusedRowCellValue("UpdatedBy").ToString();
+            txeUDATE.Text = gvCustomer.GetFocusedRowCellValue("UpdatedDate").ToString();
         }
     }
 }
