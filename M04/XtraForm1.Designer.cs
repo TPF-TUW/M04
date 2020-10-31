@@ -253,6 +253,7 @@
             this.bbiPrintPreview.Id = 14;
             this.bbiPrintPreview.ImageOptions.ImageUri.Uri = "Preview";
             this.bbiPrintPreview.Name = "bbiPrintPreview";
+            this.bbiPrintPreview.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiPrintPreview_ItemClick);
             // 
             // bsiRecordsCount
             // 
@@ -299,6 +300,7 @@
             this.bbiPrint.Id = 20;
             this.bbiPrint.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiPrint.ImageOptions.SvgImage")));
             this.bbiPrint.Name = "bbiPrint";
+            this.bbiPrint.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiPrint_ItemClick);
             // 
             // bbiSave
             // 
@@ -474,7 +476,7 @@
             // 
             // glueCode
             // 
-            this.glueCode.Location = new System.Drawing.Point(144, 4);
+            this.glueCode.Location = new System.Drawing.Point(153, 4);
             this.glueCode.MenuManager = this.ribbonControl;
             this.glueCode.Name = "glueCode";
             this.glueCode.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -483,7 +485,7 @@
             this.glueCode.Properties.NullText = "";
             this.glueCode.Properties.PopupView = this.gridView2;
             this.glueCode.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.glueCode.Size = new System.Drawing.Size(254, 20);
+            this.glueCode.Size = new System.Drawing.Size(245, 20);
             this.glueCode.StyleController = this.layoutControl1;
             this.glueCode.TabIndex = 0;
             this.glueCode.ProcessNewValue += new DevExpress.XtraEditors.Controls.ProcessNewValueEventHandler(this.glueCode_ProcessNewValue);
@@ -503,14 +505,14 @@
             // glueCustType
             // 
             this.glueCustType.EditValue = "";
-            this.glueCustType.Location = new System.Drawing.Point(605, 28);
+            this.glueCustType.Location = new System.Drawing.Point(614, 28);
             this.glueCustType.MenuManager = this.ribbonControl;
             this.glueCustType.Name = "glueCustType";
             this.glueCustType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.glueCustType.Properties.NullText = "";
             this.glueCustType.Properties.PopupView = this.gridView1;
-            this.glueCustType.Size = new System.Drawing.Size(125, 20);
+            this.glueCustType.Size = new System.Drawing.Size(116, 20);
             this.glueCustType.StyleController = this.layoutControl1;
             this.glueCustType.TabIndex = 12;
             this.glueCustType.EditValueChanged += new System.EventHandler(this.glueCustType_EditValueChanged);
@@ -524,110 +526,110 @@
             // 
             // txeName
             // 
-            this.txeName.Location = new System.Drawing.Point(144, 28);
+            this.txeName.Location = new System.Drawing.Point(153, 28);
             this.txeName.MenuManager = this.ribbonControl;
             this.txeName.Name = "txeName";
             this.txeName.Properties.MaxLength = 200;
-            this.txeName.Size = new System.Drawing.Size(317, 20);
+            this.txeName.Size = new System.Drawing.Size(308, 20);
             this.txeName.StyleController = this.layoutControl1;
             this.txeName.TabIndex = 1;
             this.txeName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txeName_KeyDown);
             // 
             // txeShortName
             // 
-            this.txeShortName.Location = new System.Drawing.Point(144, 52);
+            this.txeShortName.Location = new System.Drawing.Point(153, 52);
             this.txeShortName.MenuManager = this.ribbonControl;
             this.txeShortName.Name = "txeShortName";
             this.txeShortName.Properties.MaxLength = 10;
-            this.txeShortName.Size = new System.Drawing.Size(230, 20);
+            this.txeShortName.Size = new System.Drawing.Size(221, 20);
             this.txeShortName.StyleController = this.layoutControl1;
             this.txeShortName.TabIndex = 2;
             this.txeShortName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txeShortName_KeyDown);
             // 
             // txeUDATE
             // 
-            this.txeUDATE.Location = new System.Drawing.Point(899, 244);
+            this.txeUDATE.Location = new System.Drawing.Point(908, 244);
             this.txeUDATE.MenuManager = this.ribbonControl;
             this.txeUDATE.Name = "txeUDATE";
             this.txeUDATE.Properties.ReadOnly = true;
-            this.txeUDATE.Size = new System.Drawing.Size(91, 20);
+            this.txeUDATE.Size = new System.Drawing.Size(82, 20);
             this.txeUDATE.StyleController = this.layoutControl1;
             this.txeUDATE.TabIndex = 44;
             // 
             // txeUPDATE
             // 
-            this.txeUPDATE.Location = new System.Drawing.Point(899, 220);
+            this.txeUPDATE.Location = new System.Drawing.Point(908, 220);
             this.txeUPDATE.MenuManager = this.ribbonControl;
             this.txeUPDATE.Name = "txeUPDATE";
             this.txeUPDATE.Properties.ReadOnly = true;
-            this.txeUPDATE.Size = new System.Drawing.Size(91, 20);
+            this.txeUPDATE.Size = new System.Drawing.Size(82, 20);
             this.txeUPDATE.StyleController = this.layoutControl1;
             this.txeUPDATE.TabIndex = 43;
             // 
             // txeOthAddr3
             // 
-            this.txeOthAddr3.Location = new System.Drawing.Point(605, 244);
+            this.txeOthAddr3.Location = new System.Drawing.Point(614, 244);
             this.txeOthAddr3.MenuManager = this.ribbonControl;
             this.txeOthAddr3.Name = "txeOthAddr3";
             this.txeOthAddr3.Properties.MaxLength = 200;
-            this.txeOthAddr3.Size = new System.Drawing.Size(150, 20);
+            this.txeOthAddr3.Size = new System.Drawing.Size(141, 20);
             this.txeOthAddr3.StyleController = this.layoutControl1;
             this.txeOthAddr3.TabIndex = 21;
             // 
             // txeOthAddr2
             // 
-            this.txeOthAddr2.Location = new System.Drawing.Point(605, 220);
+            this.txeOthAddr2.Location = new System.Drawing.Point(614, 220);
             this.txeOthAddr2.MenuManager = this.ribbonControl;
             this.txeOthAddr2.Name = "txeOthAddr2";
             this.txeOthAddr2.Properties.MaxLength = 200;
-            this.txeOthAddr2.Size = new System.Drawing.Size(150, 20);
+            this.txeOthAddr2.Size = new System.Drawing.Size(141, 20);
             this.txeOthAddr2.StyleController = this.layoutControl1;
             this.txeOthAddr2.TabIndex = 20;
             this.txeOthAddr2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txeOthAddr2_KeyDown);
             // 
             // txeOthAddr1
             // 
-            this.txeOthAddr1.Location = new System.Drawing.Point(605, 196);
+            this.txeOthAddr1.Location = new System.Drawing.Point(614, 196);
             this.txeOthAddr1.MenuManager = this.ribbonControl;
             this.txeOthAddr1.Name = "txeOthAddr1";
             this.txeOthAddr1.Properties.MaxLength = 200;
-            this.txeOthAddr1.Size = new System.Drawing.Size(150, 20);
+            this.txeOthAddr1.Size = new System.Drawing.Size(141, 20);
             this.txeOthAddr1.StyleController = this.layoutControl1;
             this.txeOthAddr1.TabIndex = 19;
             this.txeOthAddr1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txeOthAddr1_KeyDown);
             // 
             // txeOthContract
             // 
-            this.txeOthContract.Location = new System.Drawing.Point(605, 172);
+            this.txeOthContract.Location = new System.Drawing.Point(614, 172);
             this.txeOthContract.MenuManager = this.ribbonControl;
             this.txeOthContract.Name = "txeOthContract";
             this.txeOthContract.Properties.MaxLength = 50;
-            this.txeOthContract.Size = new System.Drawing.Size(150, 20);
+            this.txeOthContract.Size = new System.Drawing.Size(141, 20);
             this.txeOthContract.StyleController = this.layoutControl1;
             this.txeOthContract.TabIndex = 18;
             this.txeOthContract.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txeOthContract_KeyDown);
             // 
             // txeEval
             // 
-            this.txeEval.Location = new System.Drawing.Point(605, 148);
+            this.txeEval.Location = new System.Drawing.Point(614, 148);
             this.txeEval.MenuManager = this.ribbonControl;
             this.txeEval.Name = "txeEval";
             this.txeEval.Properties.MaxLength = 50;
-            this.txeEval.Size = new System.Drawing.Size(125, 20);
+            this.txeEval.Size = new System.Drawing.Size(116, 20);
             this.txeEval.StyleController = this.layoutControl1;
             this.txeEval.TabIndex = 17;
             this.txeEval.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txeEval_KeyDown);
             // 
             // glueCalendar
             // 
-            this.glueCalendar.Location = new System.Drawing.Point(605, 124);
+            this.glueCalendar.Location = new System.Drawing.Point(614, 124);
             this.glueCalendar.MenuManager = this.ribbonControl;
             this.glueCalendar.Name = "glueCalendar";
             this.glueCalendar.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.glueCalendar.Properties.NullText = "";
             this.glueCalendar.Properties.PopupView = this.gridLookUpEdit4View;
-            this.glueCalendar.Size = new System.Drawing.Size(125, 20);
+            this.glueCalendar.Size = new System.Drawing.Size(116, 20);
             this.glueCalendar.StyleController = this.layoutControl1;
             this.glueCalendar.TabIndex = 16;
             this.glueCalendar.EditValueChanged += new System.EventHandler(this.glueCalendar_EditValueChanged);
@@ -641,14 +643,14 @@
             // 
             // glueCurrency
             // 
-            this.glueCurrency.Location = new System.Drawing.Point(605, 100);
+            this.glueCurrency.Location = new System.Drawing.Point(614, 100);
             this.glueCurrency.MenuManager = this.ribbonControl;
             this.glueCurrency.Name = "glueCurrency";
             this.glueCurrency.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.glueCurrency.Properties.NullText = "";
             this.glueCurrency.Properties.PopupView = this.gridLookUpEdit3View;
-            this.glueCurrency.Size = new System.Drawing.Size(125, 20);
+            this.glueCurrency.Size = new System.Drawing.Size(116, 20);
             this.glueCurrency.StyleController = this.layoutControl1;
             this.glueCurrency.TabIndex = 15;
             this.glueCurrency.EditValueChanged += new System.EventHandler(this.glueCurrency_EditValueChanged);
@@ -662,14 +664,14 @@
             // 
             // glueTerm
             // 
-            this.glueTerm.Location = new System.Drawing.Point(605, 76);
+            this.glueTerm.Location = new System.Drawing.Point(614, 76);
             this.glueTerm.MenuManager = this.ribbonControl;
             this.glueTerm.Name = "glueTerm";
             this.glueTerm.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.glueTerm.Properties.NullText = "";
             this.glueTerm.Properties.PopupView = this.gridLookUpEdit2View;
-            this.glueTerm.Size = new System.Drawing.Size(125, 20);
+            this.glueTerm.Size = new System.Drawing.Size(116, 20);
             this.glueTerm.StyleController = this.layoutControl1;
             this.glueTerm.TabIndex = 14;
             this.glueTerm.EditValueChanged += new System.EventHandler(this.glueTerm_EditValueChanged);
@@ -683,14 +685,14 @@
             // 
             // glueSection
             // 
-            this.glueSection.Location = new System.Drawing.Point(605, 52);
+            this.glueSection.Location = new System.Drawing.Point(614, 52);
             this.glueSection.MenuManager = this.ribbonControl;
             this.glueSection.Name = "glueSection";
             this.glueSection.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.glueSection.Properties.NullText = "";
             this.glueSection.Properties.PopupView = this.gridLookUpEdit1View;
-            this.glueSection.Size = new System.Drawing.Size(125, 20);
+            this.glueSection.Size = new System.Drawing.Size(116, 20);
             this.glueSection.StyleController = this.layoutControl1;
             this.glueSection.TabIndex = 13;
             this.glueSection.EditValueChanged += new System.EventHandler(this.glueSection_EditValueChanged);
@@ -704,109 +706,109 @@
             // 
             // txeFaxNo
             // 
-            this.txeFaxNo.Location = new System.Drawing.Point(144, 244);
+            this.txeFaxNo.Location = new System.Drawing.Point(153, 244);
             this.txeFaxNo.MenuManager = this.ribbonControl;
             this.txeFaxNo.Name = "txeFaxNo";
             this.txeFaxNo.Properties.MaxLength = 50;
-            this.txeFaxNo.Size = new System.Drawing.Size(178, 20);
+            this.txeFaxNo.Size = new System.Drawing.Size(169, 20);
             this.txeFaxNo.StyleController = this.layoutControl1;
             this.txeFaxNo.TabIndex = 11;
             this.txeFaxNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txeFaxNo_KeyDown);
             // 
             // txeTelNo
             // 
-            this.txeTelNo.Location = new System.Drawing.Point(144, 220);
+            this.txeTelNo.Location = new System.Drawing.Point(153, 220);
             this.txeTelNo.MenuManager = this.ribbonControl;
             this.txeTelNo.Name = "txeTelNo";
             this.txeTelNo.Properties.MaxLength = 50;
-            this.txeTelNo.Size = new System.Drawing.Size(178, 20);
+            this.txeTelNo.Size = new System.Drawing.Size(169, 20);
             this.txeTelNo.StyleController = this.layoutControl1;
             this.txeTelNo.TabIndex = 10;
             this.txeTelNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txeTelNo_KeyDown);
             // 
             // txeCountry
             // 
-            this.txeCountry.Location = new System.Drawing.Point(144, 196);
+            this.txeCountry.Location = new System.Drawing.Point(153, 196);
             this.txeCountry.MenuManager = this.ribbonControl;
             this.txeCountry.Name = "txeCountry";
             this.txeCountry.Properties.MaxLength = 50;
-            this.txeCountry.Size = new System.Drawing.Size(178, 20);
+            this.txeCountry.Size = new System.Drawing.Size(169, 20);
             this.txeCountry.StyleController = this.layoutControl1;
             this.txeCountry.TabIndex = 8;
             this.txeCountry.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txeCountry_KeyDown);
             // 
             // txeAddr3
             // 
-            this.txeAddr3.Location = new System.Drawing.Point(144, 172);
+            this.txeAddr3.Location = new System.Drawing.Point(153, 172);
             this.txeAddr3.MenuManager = this.ribbonControl;
             this.txeAddr3.Name = "txeAddr3";
             this.txeAddr3.Properties.MaxLength = 200;
-            this.txeAddr3.Size = new System.Drawing.Size(317, 20);
+            this.txeAddr3.Size = new System.Drawing.Size(308, 20);
             this.txeAddr3.StyleController = this.layoutControl1;
             this.txeAddr3.TabIndex = 7;
             this.txeAddr3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txeAddr3_KeyDown);
             // 
             // txeAddr2
             // 
-            this.txeAddr2.Location = new System.Drawing.Point(144, 148);
+            this.txeAddr2.Location = new System.Drawing.Point(153, 148);
             this.txeAddr2.MenuManager = this.ribbonControl;
             this.txeAddr2.Name = "txeAddr2";
             this.txeAddr2.Properties.MaxLength = 200;
-            this.txeAddr2.Size = new System.Drawing.Size(317, 20);
+            this.txeAddr2.Size = new System.Drawing.Size(308, 20);
             this.txeAddr2.StyleController = this.layoutControl1;
             this.txeAddr2.TabIndex = 6;
             this.txeAddr2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txeAddr2_KeyDown);
             // 
             // txeAddr1
             // 
-            this.txeAddr1.Location = new System.Drawing.Point(144, 124);
+            this.txeAddr1.Location = new System.Drawing.Point(153, 124);
             this.txeAddr1.MenuManager = this.ribbonControl;
             this.txeAddr1.Name = "txeAddr1";
             this.txeAddr1.Properties.MaxLength = 200;
-            this.txeAddr1.Size = new System.Drawing.Size(317, 20);
+            this.txeAddr1.Size = new System.Drawing.Size(308, 20);
             this.txeAddr1.StyleController = this.layoutControl1;
             this.txeAddr1.TabIndex = 5;
             this.txeAddr1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txeAddr1_KeyDown);
             // 
             // txeEmail
             // 
-            this.txeEmail.Location = new System.Drawing.Point(144, 100);
+            this.txeEmail.Location = new System.Drawing.Point(153, 100);
             this.txeEmail.MenuManager = this.ribbonControl;
             this.txeEmail.Name = "txeEmail";
             this.txeEmail.Properties.MaxLength = 50;
-            this.txeEmail.Size = new System.Drawing.Size(230, 20);
+            this.txeEmail.Size = new System.Drawing.Size(221, 20);
             this.txeEmail.StyleController = this.layoutControl1;
             this.txeEmail.TabIndex = 4;
             this.txeEmail.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txeEmail_KeyDown);
             // 
             // txeContacts
             // 
-            this.txeContacts.Location = new System.Drawing.Point(144, 76);
+            this.txeContacts.Location = new System.Drawing.Point(153, 76);
             this.txeContacts.MenuManager = this.ribbonControl;
             this.txeContacts.Name = "txeContacts";
             this.txeContacts.Properties.MaxLength = 30;
-            this.txeContacts.Size = new System.Drawing.Size(230, 20);
+            this.txeContacts.Size = new System.Drawing.Size(221, 20);
             this.txeContacts.StyleController = this.layoutControl1;
             this.txeContacts.TabIndex = 3;
             this.txeContacts.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txeContacts_KeyDown);
             // 
             // txeCDATE
             // 
-            this.txeCDATE.Location = new System.Drawing.Point(899, 196);
+            this.txeCDATE.Location = new System.Drawing.Point(908, 196);
             this.txeCDATE.MenuManager = this.ribbonControl;
             this.txeCDATE.Name = "txeCDATE";
             this.txeCDATE.Properties.ReadOnly = true;
-            this.txeCDATE.Size = new System.Drawing.Size(91, 20);
+            this.txeCDATE.Size = new System.Drawing.Size(82, 20);
             this.txeCDATE.StyleController = this.layoutControl1;
             this.txeCDATE.TabIndex = 22;
             // 
             // txeCREATE
             // 
-            this.txeCREATE.Location = new System.Drawing.Point(899, 172);
+            this.txeCREATE.Location = new System.Drawing.Point(908, 172);
             this.txeCREATE.MenuManager = this.ribbonControl;
             this.txeCREATE.Name = "txeCREATE";
             this.txeCREATE.Properties.ReadOnly = true;
-            this.txeCREATE.Size = new System.Drawing.Size(91, 20);
+            this.txeCREATE.Size = new System.Drawing.Size(82, 20);
             this.txeCREATE.StyleController = this.layoutControl1;
             this.txeCREATE.TabIndex = 21;
             // 

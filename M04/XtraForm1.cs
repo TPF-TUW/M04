@@ -565,5 +565,15 @@ namespace M04
             txeUPDATE.Text = gvCustomer.GetFocusedRowCellValue("UpdatedBy").ToString();
             txeUDATE.Text = gvCustomer.GetFocusedRowCellValue("UpdatedDate").ToString();
         }
+
+        private void bbiPrintPreview_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            gcCustomer.ShowPrintPreview();
+        }
+
+        private void bbiPrint_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            gcCustomer.Print();
+        }
     }
 }
