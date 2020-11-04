@@ -534,6 +534,7 @@ namespace M04
 
         private void gvCustomer_RowClick(object sender, RowClickEventArgs e)
         {
+            if (gvCustomer.IsFilterRow(e.RowHandle)) return;
             txeID.Text = gvCustomer.GetFocusedRowCellValue("No").ToString();
             lblStatus.Text = "* Edit Customer";
             lblStatus.ForeColor = Color.Red;
