@@ -535,6 +535,7 @@
             this.txeName.StyleController = this.layoutControl1;
             this.txeName.TabIndex = 1;
             this.txeName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txeName_KeyDown);
+            this.txeName.Leave += new System.EventHandler(this.txeName_Leave);
             // 
             // txeShortName
             // 
@@ -546,6 +547,7 @@
             this.txeShortName.StyleController = this.layoutControl1;
             this.txeShortName.TabIndex = 2;
             this.txeShortName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txeShortName_KeyDown);
+            this.txeShortName.Leave += new System.EventHandler(this.txeShortName_Leave);
             // 
             // txeUDATE
             // 

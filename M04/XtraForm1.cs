@@ -160,11 +160,11 @@ namespace M04
                 FUNC.msgWarning("Please select customer type.");
                 glueCustType.Focus();
             }
-            else if (glueCalendar.Text.Trim() == "")
-            {
-                FUNC.msgWarning("Please select calendar no.");
-                glueCalendar.Focus();
-            }
+            //else if (glueCalendar.Text.Trim() == "")
+            //{
+            //    FUNC.msgWarning("Please select calendar no.");
+            //    glueCalendar.Focus();
+            //}
             else
             {
                 if (FUNC.msgQuiz("Confirm save data ?") == true)
@@ -183,38 +183,28 @@ namespace M04
                         strUPDATE = txeUPDATE.Text.Trim();
                     }
 
+                    string strCalendar = "0";
+                    if (glueCalendar.Text.Trim() != "")
+                    {
+                        strCalendar = glueCalendar.EditValue.ToString();
+                    }
+
                     if (lblStatus.Text == "* Add Customer")
                     {
                         sbSQL.Append("  INSERT INTO Customer(Code, Name, ShortName, Contacts, Email, Address1, Address2, Address3, Country, PostCode, TelephoneNo, FaxNo, CustomerType, SalesSection, PaymentTerm, PaymentCurrency, CalendarNo, EvalutionPoint, OtherContact, OtherAddress1, OtherAddress2, OtherAddress3, CreatedBy, CreatedDate, UpdatedBy, UpdatedDate) ");
                         sbSQL.Append("  VALUES(N'" + glueCode.Text.Trim().Replace("'", "''") + "', N'" + txeName.Text.Trim().Replace("'", "''") + "', N'" + txeShortName.Text.Trim().Replace("'", "''") + "', N'" + txeContacts.Text.Trim().Replace("'", "''") + "', N'" + txeEmail.Text.Trim() + "', N'" + txeAddr1.Text.Trim() + "', N'" + txeAddr2.Text.Trim() + "', N'" + txeAddr3.Text.Trim() + "', N'" + txeCountry.Text.Trim() + "', N'" + txePostCode.Text.Trim() + "', N'" + txeTelNo.Text.Trim() + "', ");
-                        sbSQL.Append("         N'" + txeFaxNo.Text.Trim() + "', '" + glueCustType.EditValue.ToString() + "', N'" + glueSection.Text.Trim() + "', N'" + glueTerm.Text.Trim() + "', N'" + glueCurrency.Text.Trim() + "', '" + glueCalendar.EditValue.ToString() + "', N'" + txeEval.Text.Trim() + "', N'" + txeOthContract.Text.Trim().Replace("'", "''") + "', N'" + txeOthAddr1.Text.Trim() + "', N'" + txeOthAddr2.Text.Trim() + "', N'" + txeOthAddr3.Text.Trim() + "', '" + strCREATE + "', GETDATE(), '" + strUPDATE + "', GETDATE()) ");
+                        sbSQL.Append("         N'" + txeFaxNo.Text.Trim() + "', '" + glueCustType.EditValue.ToString() + "', N'" + glueSection.Text.Trim() + "', N'" + glueTerm.Text.Trim() + "', N'" + glueCurrency.Text.Trim() + "', '" + strCalendar + "', N'" + txeEval.Text.Trim() + "', N'" + txeOthContract.Text.Trim().Replace("'", "''") + "', N'" + txeOthAddr1.Text.Trim() + "', N'" + txeOthAddr2.Text.Trim() + "', N'" + txeOthAddr3.Text.Trim() + "', '" + strCREATE + "', GETDATE(), '" + strUPDATE + "', GETDATE()) ");
                     }
                     else if (lblStatus.Text == "* Edit Customer")
                     {
                         sbSQL.Append("  UPDATE Customer SET ");
                         sbSQL.Append("      Code = N'" + glueCode.Text.Trim().Replace("'", "''") + "', Name = N'" + txeName.Text.Trim().Replace("'", "''") + "', ShortName = N'" + txeShortName.Text.Trim().Replace("'", "''") + "', Contacts = N'" + txeContacts.Text.Trim().Replace("'", "''") + "', Email = N'" + txeEmail.Text.Trim() + "', Address1 = N'" + txeAddr1.Text.Trim() + "', Address2 = N'" + txeAddr2.Text.Trim() + "', Address3 = N'" + txeAddr3.Text.Trim() + "', ");
                         sbSQL.Append("      Country = N'" + txeCountry.Text.Trim() + "', PostCode = N'" + txePostCode.Text.Trim() + "', TelephoneNo = N'" + txeTelNo.Text.Trim() + "', FaxNo = N'" + txeFaxNo.Text.Trim() + "', CustomerType = '" + glueCustType.EditValue.ToString() + "', SalesSection = N'" + glueSection.Text.Trim() + "', PaymentTerm = N'" + glueTerm.Text.Trim() + "', ");
-                        sbSQL.Append("      PaymentCurrency = N'" + glueCurrency.Text.Trim() + "', CalendarNo = '" + glueCalendar.EditValue.ToString() + "', EvalutionPoint = N'" + txeEval.Text.Trim() + "', OtherContact = N'" + txeOthContract.Text.Trim().Replace("'", "''") + "', OtherAddress1 = N'" + txeOthAddr1.Text.Trim() + "', OtherAddress2 = N'" + txeOthAddr2.Text.Trim() + "', OtherAddress3 = N'" + txeOthAddr3.Text.Trim() + "', ");
+                        sbSQL.Append("      PaymentCurrency = N'" + glueCurrency.Text.Trim() + "', CalendarNo = '" + strCalendar + "', EvalutionPoint = N'" + txeEval.Text.Trim() + "', OtherContact = N'" + txeOthContract.Text.Trim().Replace("'", "''") + "', OtherAddress1 = N'" + txeOthAddr1.Text.Trim() + "', OtherAddress2 = N'" + txeOthAddr2.Text.Trim() + "', OtherAddress3 = N'" + txeOthAddr3.Text.Trim() + "', ");
                         sbSQL.Append("      UpdatedBy = '" + strUPDATE + "', UpdatedDate = GETDATE() ");
                         sbSQL.Append("  WHERE(OIDCUST = '" + txeID.Text.Trim() + "') ");
                     }
 
-                    //sbSQL.Append("IF NOT EXISTS(SELECT Code FROM Customer WHERE Code = N'" + glueCode.Text.Trim().Replace("'", "''") + "') ");
-                    //sbSQL.Append(" BEGIN ");
-                    //sbSQL.Append("  INSERT INTO Customer(Code, Name, ShortName, Contacts, Email, Address1, Address2, Address3, Country, PostCode, TelephoneNo, FaxNo, CustomerType, SalesSection, PaymentTerm, PaymentCurrency, CalendarNo, EvalutionPoint, OtherContact, OtherAddress1, OtherAddress2, OtherAddress3, CreatedBy, CreatedDate, UpdatedBy, UpdatedDate) ");
-                    //sbSQL.Append("  VALUES(N'" + glueCode.Text.Trim().Replace("'", "''") + "', N'" + txeName.Text.Trim().Replace("'", "''") + "', N'" + txeShortName.Text.Trim().Replace("'", "''") + "', N'" + txeContacts.Text.Trim().Replace("'", "''") + "', N'" + txeEmail.Text.Trim() + "', N'" + txeAddr1.Text.Trim() + "', N'" + txeAddr2.Text.Trim() + "', N'" + txeAddr3.Text.Trim() + "', N'" + txeCountry.Text.Trim() + "', N'" + txePostCode.Text.Trim() + "', N'" + txeTelNo.Text.Trim() + "', ");
-                    //sbSQL.Append("         N'" + txeFaxNo.Text.Trim() + "', '" + glueCustType.EditValue.ToString() + "', N'" + glueSection.Text.Trim() + "', N'" + glueTerm.Text.Trim() + "', N'" + glueCurrency.Text.Trim() + "', '" + glueCalendar.EditValue.ToString() + "', N'" + txeEval.Text.Trim() + "', N'" + txeOthContract.Text.Trim().Replace("'", "''") + "', N'" + txeOthAddr1.Text.Trim() + "', N'" + txeOthAddr2.Text.Trim() + "', N'" + txeOthAddr3.Text.Trim() + "', '" + strCREATE + "', GETDATE(), '" + strUPDATE + "', GETDATE()) ");
-                    //sbSQL.Append(" END ");
-                    //sbSQL.Append("ELSE ");
-                    //sbSQL.Append(" BEGIN ");
-                    //sbSQL.Append("  UPDATE Customer SET ");
-                    //sbSQL.Append("      Code = N'" + glueCode.Text.Trim().Replace("'", "''") + "', Name = N'" + txeName.Text.Trim().Replace("'", "''") + "', ShortName = N'" + txeShortName.Text.Trim().Replace("'", "''") + "', Contacts = N'" + txeContacts.Text.Trim().Replace("'", "''") + "', Email = N'" + txeEmail.Text.Trim() + "', Address1 = N'" + txeAddr1.Text.Trim() + "', Address2 = N'" + txeAddr2.Text.Trim() + "', Address3 = N'" + txeAddr3.Text.Trim() + "', ");
-                    //sbSQL.Append("      Country = N'" + txeCountry.Text.Trim() + "', PostCode = N'" + txePostCode.Text.Trim() + "', TelephoneNo = N'" + txeTelNo.Text.Trim() + "', FaxNo = N'" + txeFaxNo.Text.Trim() + "', CustomerType = '" + glueCustType.EditValue.ToString() + "', SalesSection = N'" + glueSection.Text.Trim() + "', PaymentTerm = N'" + glueTerm.Text.Trim() + "', ");
-                    //sbSQL.Append("      PaymentCurrency = N'" + glueCurrency.Text.Trim() + "', CalendarNo = '" + glueCalendar.EditValue.ToString() + "', EvalutionPoint = N'" + txeEval.Text.Trim() + "', OtherContact = N'" + txeOthContract.Text.Trim().Replace("'", "''") + "', OtherAddress1 = N'" + txeOthAddr1.Text.Trim() + "', OtherAddress2 = N'" + txeOthAddr2.Text.Trim() + "', OtherAddress3 = N'" + txeOthAddr3.Text.Trim() + "', ");
-                    //sbSQL.Append("      UpdatedBy = '" + strUPDATE +"', UpdatedDate = GETDATE() ");
-                    //sbSQL.Append("  WHERE(OIDCUST = '" + txeID.Text.Trim() + "') ");
-                    //sbSQL.Append(" END ");
-                    //MessageBox.Show(sbSQL.ToString());
                     if (sbSQL.Length > 0)
                     {
                         try
@@ -308,23 +298,41 @@ namespace M04
                     lblStatus.ForeColor = Color.Green;
                 }
             }
+            else
+            {
+                txeID.EditValue = new DBQuery("SELECT CASE WHEN ISNULL(MAX(OIDCUST), '') = '' THEN 1 ELSE MAX(OIDCUST) + 1 END AS NewNo FROM Customer").getString();
+                lblStatus.Text = "* Add Customer";
+                lblStatus.ForeColor = Color.Green;
+
+                bool chkNameDup = chkDuplicateName();
+                if (chkNameDup == false)
+                {
+                    txeName.Text = "";
+                }
+
+                bool chkShortDup = chkDuplicateShortName();
+                if (chkShortDup == false)
+                {
+                    txeShortName.Text = "";
+                }
+            }
 
             selCode = "";
 
             //Check new customer or edit customer
-            sbSQL.Clear();
-            sbSQL.Append("SELECT OIDCUST FROM Customer WHERE (OIDCUST = '" + txeID.EditValue.ToString() + "') ");
-            string strCHKID = new DBQuery(sbSQL).getString();
-            if (strCHKID == "")
-            {
-                lblStatus.Text = "* Add Customer";
-                lblStatus.ForeColor = Color.Green;
-            }
-            else
-            {
-                lblStatus.Text = "* Edit Customer";
-                lblStatus.ForeColor = Color.Red;
-            }
+            //sbSQL.Clear();
+            //sbSQL.Append("SELECT OIDCUST FROM Customer WHERE (OIDCUST = '" + txeID.EditValue.ToString() + "') ");
+            //string strCHKID = new DBQuery(sbSQL).getString();
+            //if (strCHKID == "")
+            //{
+            //    lblStatus.Text = "* Add Customer";
+            //    lblStatus.ForeColor = Color.Green;
+            //}
+            //else
+            //{
+            //    lblStatus.Text = "* Edit Customer";
+            //    lblStatus.ForeColor = Color.Red;
+            //}
             txeName.Focus();
         }
 
@@ -563,6 +571,110 @@ namespace M04
                 LoadCode(glueCode.Text);
                 //MessageBox.Show(glueCode.Text);
             }
+        }
+
+        private void txeName_Leave(object sender, EventArgs e)
+        {
+            if (txeName.Text.Trim() != "")
+            {
+                txeName.Text = txeName.Text.Trim();
+                bool chkDup = chkDuplicateName();
+                if (chkDup == true)
+                {
+                    txeShortName.Focus();
+                }
+                else
+                {
+                    txeName.Text = "";
+                    txeName.Focus();
+                    FUNC.msgWarning("Duplicate customer name. !! Please Change.");
+
+                }
+            }
+        }
+
+        private void txeShortName_Leave(object sender, EventArgs e)
+        {
+            if (txeShortName.Text.Trim() != "")
+            {
+                txeShortName.Text = txeShortName.Text.ToUpper().Trim();
+                bool chkDup = chkDuplicateShortName();
+                if (chkDup == true)
+                {
+                    txeContacts.Focus();
+                }
+                else
+                {
+                    txeShortName.Text = "";
+                    txeShortName.Focus();
+                    FUNC.msgWarning("Duplicate customer short name. !! Please Change.");
+
+                }
+            }
+        }
+
+        private bool chkDuplicateName()
+        {
+            bool chkDup = true;
+            if (txeName.Text != "")
+            {
+                txeName.Text = txeName.Text.Trim();
+
+                if (txeName.Text.Trim() != "" && lblStatus.Text == "* Add Customer")
+                {
+                    StringBuilder sbSQL = new StringBuilder();
+                    sbSQL.Append("SELECT TOP(1) Name FROM Customer WHERE (Name = N'" + txeName.Text.Trim().Replace("'", "''") + "') ");
+                    if (new DBQuery(sbSQL).getString() != "")
+                    {
+                        chkDup = false;
+                    }
+                }
+                else if (txeName.Text.Trim() != "" && lblStatus.Text == "* Edit Customer")
+                {
+                    StringBuilder sbSQL = new StringBuilder();
+                    sbSQL.Append("SELECT TOP(1) OIDCUST ");
+                    sbSQL.Append("FROM Customer ");
+                    sbSQL.Append("WHERE (Name = N'" + txeName.Text.Trim().Replace("'", "''") + "') ");
+                    string strCHK = new DBQuery(sbSQL).getString();
+                    if (strCHK != "" && strCHK != txeID.Text.Trim())
+                    {
+                        chkDup = false;
+                    }
+                }
+            }
+            return chkDup;
+        }
+
+        private bool chkDuplicateShortName()
+        {
+            bool chkDup = true;
+            if (txeShortName.Text != "")
+            {
+                txeShortName.Text = txeShortName.Text.ToUpper().Trim();
+
+                if (txeShortName.Text.Trim() != "" && lblStatus.Text == "* Add Customer")
+                {
+                    StringBuilder sbSQL = new StringBuilder();
+                    sbSQL.Append("SELECT TOP(1) ShortName FROM Customer WHERE (ShortName = N'" + txeShortName.Text.Trim().Replace("'", "''") + "') ");
+                    if (new DBQuery(sbSQL).getString() != "")
+                    {
+                        chkDup = false;
+                    }
+                }
+                else if (txeShortName.Text.Trim() != "" && lblStatus.Text == "* Edit Customer")
+                {
+                    StringBuilder sbSQL = new StringBuilder();
+                    sbSQL.Append("SELECT TOP(1) OIDCUST ");
+                    sbSQL.Append("FROM Customer ");
+                    sbSQL.Append("WHERE (ShortName = N'" + txeShortName.Text.Trim().Replace("'", "''") + "') ");
+                    string strCHK = new DBQuery(sbSQL).getString();
+                    if (strCHK != "" && strCHK != txeID.Text.Trim())
+                    {
+                        chkDup = false;
+                    }
+                }
+            }
+            return chkDup;
         }
     }
 }
