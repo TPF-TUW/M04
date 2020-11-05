@@ -44,7 +44,7 @@ namespace M04
 
         private void NewData()
         {
-            txeID.EditValue = new DBQuery("SELECT CASE WHEN ISNULL(MAX(OIDCUST), '') = '' THEN 1 ELSE MAX(OIDCUST) + 1 END AS NewNo FROM Customer").getString();
+            txeID.Text = new DBQuery("SELECT CASE WHEN ISNULL(MAX(OIDCUST), '') = '' THEN 1 ELSE MAX(OIDCUST) + 1 END AS NewNo FROM Customer").getString();
             lblStatus.Text = "* Add Customer";
             lblStatus.ForeColor = Color.Green;
             glueCode.EditValue = "";
@@ -288,21 +288,24 @@ namespace M04
                     txeCDATE.Text = arrCust[24];
                     txeUPDATE.Text = arrCust[25];
                     txeUDATE.Text = arrCust[26];
-
+                    txeName.Focus();
                 }
                 else
                 {
                     glueCode.Text = "";
+                    glueCalendar.EditValue = "";
                     glueCode.Focus();
                     lblStatus.Text = "* Add Customer";
                     lblStatus.ForeColor = Color.Green;
+
                 }
             }
             else
             {
-                txeID.EditValue = new DBQuery("SELECT CASE WHEN ISNULL(MAX(OIDCUST), '') = '' THEN 1 ELSE MAX(OIDCUST) + 1 END AS NewNo FROM Customer").getString();
+                txeID.Text = new DBQuery("SELECT CASE WHEN ISNULL(MAX(OIDCUST), '') = '' THEN 1 ELSE MAX(OIDCUST) + 1 END AS NewNo FROM Customer").getString();
                 lblStatus.Text = "* Add Customer";
                 lblStatus.ForeColor = Color.Green;
+                glueCalendar.EditValue = "";
 
                 bool chkNameDup = chkDuplicateName();
                 if (chkNameDup == false)
@@ -315,13 +318,14 @@ namespace M04
                 {
                     txeShortName.Text = "";
                 }
+                txeName.Focus();
             }
 
             selCode = "";
 
             //Check new customer or edit customer
             //sbSQL.Clear();
-            //sbSQL.Append("SELECT OIDCUST FROM Customer WHERE (OIDCUST = '" + txeID.EditValue.ToString() + "') ");
+            //sbSQL.Append("SELECT OIDCUST FROM Customer WHERE (OIDCUST = '" + txeID.Text.ToString() + "') ");
             //string strCHKID = new DBQuery(sbSQL).getString();
             //if (strCHKID == "")
             //{
@@ -333,7 +337,7 @@ namespace M04
             //    lblStatus.Text = "* Edit Customer";
             //    lblStatus.ForeColor = Color.Red;
             //}
-            txeName.Focus();
+            
         }
 
         private void gvCustomer_RowCellClick(object sender, RowCellClickEventArgs e)
