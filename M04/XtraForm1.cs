@@ -292,6 +292,7 @@ namespace M04
                 }
                 else
                 {
+                    txeID.Text = new DBQuery("SELECT CASE WHEN ISNULL(MAX(OIDCUST), '') = '' THEN 1 ELSE MAX(OIDCUST) + 1 END AS NewNo FROM Customer").getString();
                     glueCode.Text = "";
                     glueCalendar.EditValue = "";
                     glueCode.Focus();
