@@ -251,13 +251,7 @@ namespace M04
 
         private void glueCode_LostFocus(object sender, EventArgs e)
         {
-            if (glueCode.Text.Trim() != "" && glueCode.Text.ToUpper().Trim() != selCode)
-            {
-                glueCode.Text = glueCode.Text.ToUpper().Trim();
-                selCode = glueCode.Text;
-                LoadCode(glueCode.Text);
-                //MessageBox.Show(glueCode.Text);
-            }
+            
             
         }
 
@@ -575,6 +569,17 @@ namespace M04
         private void bbiPrint_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             gcCustomer.Print();
+        }
+
+        private void glueCode_Leave(object sender, EventArgs e)
+        {
+            if (glueCode.Text.Trim() != "" && glueCode.Text.ToUpper().Trim() != selCode)
+            {
+                glueCode.Text = glueCode.Text.ToUpper().Trim();
+                selCode = glueCode.Text;
+                LoadCode(glueCode.Text);
+                //MessageBox.Show(glueCode.Text);
+            }
         }
     }
 }
