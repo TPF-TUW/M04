@@ -258,36 +258,7 @@ namespace M04
         private void LoadCode(string strCODE)
         {
             strCODE = strCODE.ToUpper().Trim();
-            txeID.Text = "";
-            lblStatus.Text = "* Add Customer";
-            lblStatus.ForeColor = Color.Green;
-            txeName.Text = "";
-            txeShortName.Text = "";
-            txeContacts.Text = "";
-            txeEmail.Text = "";
-            txeAddr1.Text = "";
-            txeAddr2.Text = "";
-            txeAddr3.Text = "";
-            txeCountry.Text = "";
-            txePostCode.Text = "";
-            txeTelNo.Text = "";
-            txeFaxNo.Text = "";
-            glueCustType.EditValue = "";
-            glueSection.EditValue = "";
-            glueTerm.EditValue = "";
-            glueCurrency.EditValue = "";
-            glueCalendar.EditValue = "";
-            txeEval.Text = "";
-            txeOthContract.Text = "";
-            txeOthAddr1.Text = "";
-            txeOthAddr2.Text = "";
-            txeOthAddr3.Text = "";
-            txeCREATE.Text = "0";
-            txeCDATE.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-            txeUPDATE.Text = "0";
-            txeUDATE.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-            //selCode = "";
-            txeName.Focus();
+            
 
             StringBuilder sbSQL = new StringBuilder();
             sbSQL.Append("SELECT OIDCUST, Code, Name, ShortName, Contacts, Email, Address1, Address2, Address3, Country, PostCode, TelephoneNo, FaxNo, CustomerType, SalesSection, PaymentTerm, PaymentCurrency, CalendarNo, ");
@@ -297,36 +268,48 @@ namespace M04
             string[] arrCust = new DBQuery(sbSQL).getMultipleValue();
             if (arrCust.Length > 0)
             {
-                txeID.Text = arrCust[0];
-                lblStatus.Text = "* Edit Customer";
-                lblStatus.ForeColor = Color.Red;
-                txeName.Text = arrCust[2];
-                txeShortName.Text = arrCust[3];
-                txeContacts.Text = arrCust[4];
-                txeEmail.Text = arrCust[5];
-                txeAddr1.Text = arrCust[6];
-                txeAddr2.Text = arrCust[7];
-                txeAddr3.Text = arrCust[8];
-                txeCountry.Text = arrCust[9];
-                txePostCode.Text = arrCust[10];
-                txeTelNo.Text = arrCust[11];
-                txeFaxNo.Text = arrCust[12];
-                glueCustType.EditValue = arrCust[13];
-                glueSection.EditValue = arrCust[14];
-                glueTerm.EditValue = arrCust[15];
-                glueCurrency.EditValue = arrCust[16];
-                glueCalendar.EditValue = arrCust[17];
-                txeEval.Text = arrCust[18]; ;
-                txeOthContract.Text = arrCust[19];
-                txeOthAddr1.Text = arrCust[20];
-                txeOthAddr2.Text = arrCust[21];
-                txeOthAddr3.Text = arrCust[22];
-                txeCREATE.Text = arrCust[23];
-                txeCDATE.Text = arrCust[24];
-                txeUPDATE.Text = arrCust[25];
-                txeUDATE.Text = arrCust[26];
+                if (FUNC.msgQuiz("The system already has this name. Want to fix it ?") == true)
+                {
+                    txeID.Text = arrCust[0];
+                    lblStatus.Text = "* Edit Customer";
+                    lblStatus.ForeColor = Color.Red;
+                    txeName.Text = arrCust[2];
+                    txeShortName.Text = arrCust[3];
+                    txeContacts.Text = arrCust[4];
+                    txeEmail.Text = arrCust[5];
+                    txeAddr1.Text = arrCust[6];
+                    txeAddr2.Text = arrCust[7];
+                    txeAddr3.Text = arrCust[8];
+                    txeCountry.Text = arrCust[9];
+                    txePostCode.Text = arrCust[10];
+                    txeTelNo.Text = arrCust[11];
+                    txeFaxNo.Text = arrCust[12];
+                    glueCustType.EditValue = arrCust[13];
+                    glueSection.EditValue = arrCust[14];
+                    glueTerm.EditValue = arrCust[15];
+                    glueCurrency.EditValue = arrCust[16];
+                    glueCalendar.EditValue = arrCust[17];
+                    txeEval.Text = arrCust[18]; ;
+                    txeOthContract.Text = arrCust[19];
+                    txeOthAddr1.Text = arrCust[20];
+                    txeOthAddr2.Text = arrCust[21];
+                    txeOthAddr3.Text = arrCust[22];
+                    txeCREATE.Text = arrCust[23];
+                    txeCDATE.Text = arrCust[24];
+                    txeUPDATE.Text = arrCust[25];
+                    txeUDATE.Text = arrCust[26];
+
+                }
+                else
+                {
+                    glueCode.Text = "";
+                    glueCode.Focus();
+                    lblStatus.Text = "* Add Customer";
+                    lblStatus.ForeColor = Color.Green;
+                }
             }
 
+            selCode = "";
 
             //Check new customer or edit customer
             sbSQL.Clear();
