@@ -11,11 +11,11 @@ using DevExpress.XtraEditors;
 
 namespace M04
 {
-    public partial class XtraForm1 : DevExpress.XtraBars.Ribbon.RibbonForm
+    public partial class M04 : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         private Functionality.Function FUNC = new Functionality.Function();
         private string selCode = "";
-        public XtraForm1()
+        public M04()
         {
             InitializeComponent();
             UserLookAndFeel.Default.StyleChanged += MyStyleChanged;
