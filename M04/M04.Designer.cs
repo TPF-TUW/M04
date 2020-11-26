@@ -501,6 +501,8 @@
             this.gridView2.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.gridView2.Name = "gridView2";
             this.gridView2.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView2.OptionsView.EnableAppearanceEvenRow = true;
+            this.gridView2.OptionsView.EnableAppearanceOddRow = true;
             this.gridView2.OptionsView.ShowGroupPanel = false;
             // 
             // glueCustType
@@ -523,6 +525,8 @@
             this.gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
+            this.gridView1.OptionsView.EnableAppearanceOddRow = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
             // txeName
@@ -642,6 +646,8 @@
             this.gridLookUpEdit4View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.gridLookUpEdit4View.Name = "gridLookUpEdit4View";
             this.gridLookUpEdit4View.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridLookUpEdit4View.OptionsView.EnableAppearanceEvenRow = true;
+            this.gridLookUpEdit4View.OptionsView.EnableAppearanceOddRow = true;
             this.gridLookUpEdit4View.OptionsView.ShowGroupPanel = false;
             // 
             // glueCurrency
@@ -663,6 +669,8 @@
             this.gridLookUpEdit3View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.gridLookUpEdit3View.Name = "gridLookUpEdit3View";
             this.gridLookUpEdit3View.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridLookUpEdit3View.OptionsView.EnableAppearanceEvenRow = true;
+            this.gridLookUpEdit3View.OptionsView.EnableAppearanceOddRow = true;
             this.gridLookUpEdit3View.OptionsView.ShowGroupPanel = false;
             // 
             // glueTerm
@@ -684,6 +692,8 @@
             this.gridLookUpEdit2View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.gridLookUpEdit2View.Name = "gridLookUpEdit2View";
             this.gridLookUpEdit2View.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridLookUpEdit2View.OptionsView.EnableAppearanceEvenRow = true;
+            this.gridLookUpEdit2View.OptionsView.EnableAppearanceOddRow = true;
             this.gridLookUpEdit2View.OptionsView.ShowGroupPanel = false;
             // 
             // glueSection
@@ -705,6 +715,8 @@
             this.gridLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.gridLookUpEdit1View.Name = "gridLookUpEdit1View";
             this.gridLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridLookUpEdit1View.OptionsView.EnableAppearanceEvenRow = true;
+            this.gridLookUpEdit1View.OptionsView.EnableAppearanceOddRow = true;
             this.gridLookUpEdit1View.OptionsView.ShowGroupPanel = false;
             // 
             // txeFaxNo
