@@ -93,9 +93,9 @@ namespace M04
 
             //Sales Section
             sbSQL.Clear();
-            sbSQL.Append("SELECT OIDDepartment AS ID, Department ");
-            sbSQL.Append("FROM Department ");
-            sbSQL.Append("ORDER BY OIDDepartment ");
+            sbSQL.Append("SELECT OIDDEPT AS ID, Name AS Department ");
+            sbSQL.Append("FROM Departments ");
+            sbSQL.Append("ORDER BY OIDDEPT ");
             new ObjDevEx.setGridLookUpEdit(glueSection, sbSQL, "Department", "Department").getData(true);
 
             //Payment Term
