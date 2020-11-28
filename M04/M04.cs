@@ -93,9 +93,16 @@ namespace M04
 
             //Sales Section
             sbSQL.Clear();
-            sbSQL.Append("SELECT OIDDEPT AS ID, Name AS Department ");
-            sbSQL.Append("FROM Departments ");
-            sbSQL.Append("ORDER BY OIDDEPT ");
+            //sbSQL.Append("SELECT OIDDEPT AS ID, Name AS Department ");
+            //sbSQL.Append("FROM Departments ");
+            //sbSQL.Append("ORDER BY OIDDEPT ");
+            sbSQL.Append("SELECT DP.Code AS [Department Code], DP.Name AS [Department], CP.Code AS Company, BN.Name AS Branch, DP.OIDDEPT ");
+            sbSQL.Append("FROM Departments AS DP INNER JOIN ");
+            sbSQL.Append("     DepartmentType AS DT ON DP.DepartmentType = DT.Code INNER JOIN ");
+            sbSQL.Append("     Company AS CP ON DP.OIDCOMPANY = CP.OIDCOMPANY INNER JOIN ");
+            sbSQL.Append("     Branchs AS BN ON DP.OIDBRANCH = BN.OIDBranch ");
+            sbSQL.Append("WHERE (DT.Name = N'Sales') AND(CP.Code = N'TPF') ");
+            sbSQL.Append("ORDER BY DP.OIDCOMPANY, DP.OIDBRANCH, DP.OIDDEPT ");
             new ObjDevEx.setGridLookUpEdit(glueSection, sbSQL, "Department", "Department").getData(true);
 
             //Payment Term
